@@ -77,6 +77,17 @@ select option{color:#0b1220}
   position:relative;
   box-shadow: var(--shadow);
   overflow:hidden;
+  
+  .logo{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.logo-footer{
+  height:46px;
+}
+
 }
 .brand-mark:after{
   content:"";
