@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Football Programs — Global Sport Academy</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="badges">
+          <span class="badge" data-i18n="top_location">Ngaoundéré • Adamaoua • Cameroon</span>
+          <span class="badge" data-i18n="top_school">Based at Global Management School</span>
+        </div>
+        <div class="lang">
+          <span style="opacity:.85">Language</span>
+          <select id="langSelect" aria-label="Select language">
+            <option value="en">EN</option><option value="fr">FR</option><option value="es">ES</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-text"><strong>GSA</strong><span data-i18n="tagline">From Africa to the World</span></div>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" type="button">Menu</button>
+        <div class="navlinks">
+          <a href="index.html" data-i18n="nav_home">Home</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="football.html" data-i18n="nav_football">Football</a>
+          <a href="education.html" data-i18n="nav_education">Education</a>
+          <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
+          <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
+          <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
+          <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <a class="btn primary" href="admissions.html" data-i18n="cta_enrol">Enrol Now</a>
+          <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html" data-i18n="nav_home">Home</a><span>›</span><span data-i18n="nav_football">Football</span></div>
+      <h1 class="h1" data-i18n="football_h1">Football Programs</h1>
+      <p class="lead" data-i18n="football_lead">...</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card"><h3 data-i18n="p1_title">Grassroots (6–9)</h3><p data-i18n="p1_text">...</p></div>
+        <div class="card"><h3 data-i18n="p2_title">Foundation (10–12)</h3><p data-i18n="p2_text">...</p></div>
+        <div class="card"><h3 data-i18n="p3_title">Youth Development (13–15)</h3><p data-i18n="p3_text">...</p></div>
+        <div class="card"><h3 data-i18n="p4_title">Elite Performance (16–19)</h3><p data-i18n="p4_text">...</p></div>
+      </div>
+
+      <div style="margin-top:18px" class="card">
+        <h3 data-i18n="p5_title">Girls Football Program</h3>
+        <p data-i18n="p5_text">...</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <div class="brand-mark" aria-hidden="true"></div>
+            <div class="brand-text"><strong>GLOBAL SPORT ACADEMY</strong><span data-i18n="tagline">From Africa to the World</span></div>
+          </div>
+          <p class="small" data-i18n="foot_about">...</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
+          <p class="small">
+            <a href="football.html" data-i18n="nav_football">Football</a><br/>
+            <a href="education.html" data-i18n="nav_education">Education</a><br/>
+            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
+            <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          </p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
+          <p class="small">Ngaoundéré, Adamaoua, Cameroon<br/>
+            <a href="contact.html" data-i18n="cta_contact">Contact</a></p>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div class="notice">© <span id="year"></span> Global Sport Academy. <span data-i18n="foot_rights">All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
