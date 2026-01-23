@@ -4,10 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Partnerships — Global Sport Academy</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+
   <div class="topbar">
     <div class="container">
       <div class="row">
@@ -18,7 +24,9 @@
         <div class="lang">
           <span style="opacity:.85">Language</span>
           <select id="langSelect" aria-label="Select language">
-            <option value="en">EN</option><option value="fr">FR</option><option value="es">ES</option>
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="es">ES</option>
           </select>
         </div>
       </div>
@@ -59,81 +67,93 @@
     </div>
   </header>
 
-
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumb"><a href="index.html" data-i18n="nav_home">Home</a><span>›</span><span data-i18n="nav_partnerships">Page</span></div>
-      <h1 class="h1" data-i18n="partnerships_h1">Title</h1>
-      <p class="lead" data-i18n="partnerships_lead">Lead</p>
+      <div class="breadcrumb">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <span>›</span>
+        <span data-i18n="nav_partnerships">Partnerships</span>
+      </div>
+
+      <h1 class="h1" data-i18n="partnerships_h1">Partner With Global Sport Academy</h1>
+      <p class="lead" data-i18n="partnerships_lead">
+        We welcome collaboration with football clubs, education institutions, sponsors, NGOs, and development partners.
+      </p>
+
       <div class="hero-actions">
         <a class="btn primary" href="admissions.html" data-i18n="cta_enrol">Enrol Now</a>
-        <a class="btn" href="partnerships.html" data-i18n="cta_partner">Become a Partner</a>
-        <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
+        <a class="btn" href="donations.html" data-i18n="cta_donate">Donate</a>
+        <a class="btn gold" href="partnerships.html" data-i18n="cta_partner">Become a Partner</a>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
+
       <div class="grid grid-2">
         <div class="card">
-          <h3>Who We Work With</h3>
-          <p>Local clubs, federations, European academies, international clubs, NGOs, universities, scouts and sponsors.</p>
+          <h3>Why Partner With Us</h3>
+          <p>
+            Global Sport Academy provides a structured pathway for African talents to access football, education, and international opportunities.
+            Partners benefit from early talent access, CSR visibility, and a long-term development pipeline.
+          </p>
         </div>
-        <div class="card">
-          <h3>Partnership Options</h3>
-          <p>Talent pathways, exchange programs, coaching clinics, scholarships, friendly matches, equipment support, and brand sponsorship.</p>
-        </div>
-      </div>
-      <div style="margin-top:18px" class="card">
-        <h3>International Collaboration</h3>
-        <p>We welcome collaboration with larger clubs in Africa and internationally to create exposure, trials, and development opportunities.</p>
-      </div>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="cols">
-        <div>
-          <div class="brand" style="margin-bottom:10px">
-            <img src="assets/images/logo-white.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
-            <div class="brand-text">
-              <strong>GLOBAL SPORT ACADEMY</strong>
-              <span data-i18n="tagline">From Africa to the World</span>
+        <div class="card">
+          <h3>Partnership Areas</h3>
+          <p>
+            Talent identification and scouting<br>
+            Player pathway and trials<br>
+            Coach education and certification<br>
+            Equipment and kit sponsorship<br>
+            Education and digital learning collaboration<br>
+            CSR and community development projects
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px" class="callout">
+        <strong>Strategic Collaborations</strong>
+        <p class="sub" style="margin-top:8px">
+          We are actively seeking partnerships with local and international clubs, federations, brands, and institutions.
+        </p>
+      </div>
+
+      <!-- Partnership Form -->
+      <div style="margin-top:18px">
+
+        <form name="partnerships" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html" class="card">
+
+          <input type="hidden" name="form-name" value="partnerships" />
+
+          <p style="display:none;">
+            <label>Don’t fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div class="grid grid-2">
+            <div>
+              <label>Club / Company / Organization</label>
+              <input class="input" type="text" name="org" required placeholder="Organization name" />
+            </div>
+
+            <div>
+              <label>Website (optional)</label>
+              <input class="input" type="url" name="website" placeholder="https://..." />
             </div>
           </div>
-          <p class="small" data-i18n="foot_about">...</p>
-        </div>
 
-        <div>
-          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
-          <p class="small">
-            <a href="football.html" data-i18n="nav_football">Football</a><br/>
-            <a href="education.html" data-i18n="nav_education">Education</a><br/>
-            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
-            <a href="donations.html" data-i18n="nav_donations">Donations</a>
-          </p>
-        </div>
+          <div class="grid grid-2" style="margin-top:12px;">
+            <div>
+              <label>Contact Person</label>
+              <input class="input" type="text" name="contact_person" required placeholder="Name" />
+            </div>
 
-        <div>
-          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
-          <p class="small">
-            Ngaoundéré, Adamaoua, Cameroon<br/>
-            <a href="contact.html" data-i18n="cta_contact">Contact</a>
-          </p>
-        </div>
-      </div>
+            <div>
+              <label>Email</label>
+              <input class="input" type="email" name="email" required placeholder="you@email.com" />
+            </div>
+          </div>
 
-      <div class="hr"></div>
-      <div class="notice">© <span id="year"></span> Global Sport Academy. <span data-i18n="foot_rights">All rights reserved.</span></div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-</body>
-</html>
-
-
-
+          <div style="margin-top:12px;">
+            <label>Part
