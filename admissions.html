@@ -230,6 +230,32 @@
           <textarea class="input" name="notes" rows="6" placeholder="Any questions or comments..."></textarea>
         </div>
 
+        <div class="callout" id="enrolSummary" style="margin-top:16px; display:none;">
+  <strong>Review Your Selections</strong>
+  <p class="sub" style="margin-top:8px">Please confirm the details below before submitting.</p>
+
+  <div class="grid grid-2" style="margin-top:12px">
+    <div class="small">
+      <strong>Parent/Guardian:</strong> <span id="sum_parent">—</span><br/>
+      <strong>Email:</strong> <span id="sum_email">—</span><br/>
+      <strong>Phone:</strong> <span id="sum_phone">—</span>
+    </div>
+
+    <div class="small">
+      <strong>Child:</strong> <span id="sum_child">—</span><br/>
+      <strong>Age:</strong> <span id="sum_age">—</span><br/>
+      <strong>Start Month:</strong> <span id="sum_start">—</span>
+    </div>
+  </div>
+
+  <div class="hr" style="margin:14px 0;"></div>
+
+  <div class="small">
+    <strong>Program of Interest:</strong> <span id="sum_program">—</span><br/>
+    <strong>Payment Option:</strong> <span id="sum_payment">—</span>
+  </div>
+</div>
+
         <div style="margin-top:14px;">
           <button class="btn primary" type="submit">Submit Enrolment Request</button>
         </div>
@@ -283,6 +309,66 @@
 
   <script src="assets/js/main.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+(function () {
+  const form = document.querySelector('form[name="admissions"]');
+  if (!form) return;
+
+  const summary = document.getElementById('enrolSummary');
+  const out = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val && String(val).trim() ? val : '—';
+  };
+
+  const getVal = (name) => {
+    const el = form.elements[name];
+    if (!el) return '';
+    if (el.tagName === 'SELECT') {
+      const opt = el.options[el.selectedIndex];
+      return opt ? opt.textContent.trim() : '';
+    }
+    return el.value || '';
+  };
+
+  const fmtMonth = (v) => {
+    // v like "2026-01"
+    if (!v || !/^\d{4}-\d{2}$/.test(v)) return v || '';
+    const [y, m] = v.split('-');
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    return `${months[Number(m) - 1]} ${y}`;
+  };
+
+  const update = () => {
+    const parent = getVal('parent_name');
+    const email  = getVal('email');
+    const phone  = getVal('phone');
+    const child  = getVal('child_name');
+    const age    = getVal('child_age');
+    const start  = fmtMonth(getVal('start_month'));
+    const prog   = getVal('program');
+    const pay    = getVal('payment_option');
+
+    out('sum_parent', parent);
+    out('sum_email', email);
+    out('sum_phone', phone);
+    out('sum_child', child);
+    out('sum_age', age);
+    out('sum_start', start);
+    out('sum_program', prog);
+    out('sum_payment', pay);
+
+    // Show summary once anything meaningful is entered
+    const hasAny =
+      [parent,email,phone,child,age,start,prog,pay].some(v => v && String(v).trim());
+    summary.style.display = hasAny ? '' : 'none';
+  };
+
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  update();
+})();
+</script>
 
 </body>
 </html>
+
