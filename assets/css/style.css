@@ -268,4 +268,24 @@ select option{color:#0b1220}
   outline:none;
   font-size:14px;
 }
+/* Enrolment Form – Review Summary Fix */
+#enrolSummary {
+  color: #0b1b34; /* deep navy */
+}
+
+#enrolSummary strong {
+  color: #07162c; /* footer/nav dark blue */
+}
+
+#enrolSummary .small {
+  color: #24324a;
+}
+
+#enrolSummary span {
+  color: #0b1b34;
+}
+
+#enrolSummary .sub {
+  color: #4a5b76;
+}
 
