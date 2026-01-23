@@ -4,34 +4,120 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thank you | Global Sport Academy</title>
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <img src="assets/images/logo.png" alt="Global Sport Academy logo" class="logo">
-      </a>
-      <div class="nav-cta">
-        <a class="btn" href="index.html">Back to Home</a>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="badges">
+          <span class="badge">Ngaoundéré • Adamaoua • Cameroon</span>
+          <span class="badge">Based at Global Management School</span>
+        </div>
+        <div class="lang">
+          <span style="opacity:.85">Language</span>
+          <select id="langSelect" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo">
+          <div class="brand-text">
+            <strong>GSA</strong>
+            <span>From Africa to the World</span>
+          </div>
+        </a>
+
+        <div class="nav-cta">
+          <a class="btn" href="index.html">Back to Home</a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <main class="section">
     <div class="container">
-      <div class="callout">
+
+      <div class="callout" style="max-width:640px; margin:0 auto; text-align:center;">
         <h1 class="h2">Thank you!</h1>
-        <p class="sub">We received your message. Our team will get back to you shortly.</p>
-        <a class="btn primary" href="index.html">Return to homepage</a>
+        <p class="sub">
+          We received your message successfully.<br>
+          Our team will review it and get back to you shortly.
+        </p>
+
+        <div style="margin-top:18px;">
+          <a class="btn primary" href="index.html">Return to homepage</a>
+        </div>
       </div>
+
     </div>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <div class="notice">© 2026 Global Sport Academy. All rights reserved.</div>
+
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
+            <div class="brand-text">
+              <strong>GLOBAL SPORT ACADEMY</strong>
+              <span>From Africa to the World</span>
+            </div>
+          </div>
+
+          <p class="small">
+            Global Sport Academy is based in Ngaoundéré, Cameroon, and delivers elite football training alongside accredited education programs.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px">Quick Links</h3>
+          <p class="small">
+            <a href="football.html">Football</a><br/>
+            <a href="education.html">Education</a><br/>
+            <a href="dual-pathway.html">Dual Pathway</a><br/>
+            <a href="donations.html">Donations</a>
+          </p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px">Contact</h3>
+          <p class="small">
+            Ngaoundéré, Adamaoua, Cameroon<br/>
+            <a href="contact.html">Contact</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="notice">
+        © <span id="year"></span> Global Sport Academy. All rights reserved.
+      </div>
+
     </div>
   </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
