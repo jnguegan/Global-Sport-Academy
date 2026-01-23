@@ -53,6 +53,7 @@
           <a href="education.html" data-i18n="nav_education">Education</a>
           <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
           <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
+          <a href="fees.html" data-i18n="nav_fees">Fees</a>
           <a href="donations.html" data-i18n="nav_donations">Donations</a>
           <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
           <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
@@ -60,8 +61,9 @@
         </div>
 
         <div class="nav-cta">
-          <a class="btn primary" href="admissions.html#enrol" data-i18n="cta_enrol">Enrol Now</a>
-          <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
+          <a class="btn primary" href="#enrol" data-i18n="cta_enrol">Enrol Now</a>
+          <a class="btn" href="fees.html" data-i18n="nav_fees">View Fees</a>
+          <a class="btn gold" href="fees.html#pay" data-i18n="fees_jump_pay">Request Payment</a>
         </div>
       </nav>
     </div>
@@ -75,15 +77,15 @@
         <span data-i18n="nav_admissions">Admissions</span>
       </div>
 
-      <h1 class="h1" data-i18n="admissions_h1">Admissions & Enrolment</h1>
+      <h1 class="h1" data-i18n="admissions_h1">Admissions</h1>
       <p class="lead" data-i18n="admissions_lead">
-        Join Global Sport Academy and access elite football training alongside education and life-skills development.
+        Join Global Sport Academy and start your football and education journey.
       </p>
 
       <div class="hero-actions">
         <a class="btn primary" href="#enrol" data-i18n="cta_enrol">Enrol Now</a>
-        <a class="btn" href="football.html" data-i18n="cta_programs">View Programs</a>
-        <a class="btn gold" href="contact.html" data-i18n="cta_contact">Contact Us</a>
+        <a class="btn" href="fees.html" data-i18n="nav_fees">View Fees</a>
+        <a class="btn gold" href="fees.html#pay" data-i18n="fees_jump_pay">Request Payment</a>
       </div>
     </div>
   </section>
@@ -91,127 +93,153 @@
   <section class="section">
     <div class="container">
 
-      <div class="grid grid-2">
+      <h2 class="h2" data-i18n="admissions_process_title">Admissions Process</h2>
+      <p class="sub" data-i18n="admissions_process_sub">
+        Our admissions process is designed to be transparent, fair, and supportive.
+      </p>
+
+      <div class="grid grid-3" style="margin-top:14px">
         <div class="card">
-          <h3>Who Can Apply</h3>
-          <p>
-            Boys and girls aged 6–19 for football programs.<br>
-            Students aged 16+ for education and sport science courses.<br>
-            Scholarships available for outstanding talents.
+          <h3 data-i18n="admissions_step1_title">1. Application</h3>
+          <p class="small" data-i18n="admissions_step1_text">
+            Submit the enrolment form below with accurate personal and medical information.
           </p>
         </div>
 
         <div class="card">
-          <h3>Admissions Process</h3>
-          <p>
-            Step 1: Submit enrolment or trial request form.<br>
-            Step 2: Screening and assessment.<br>
-            Step 3: Trial session or interview.<br>
-            Step 4: Confirmation and onboarding.
+          <h3 data-i18n="admissions_step2_title">2. Assessment</h3>
+          <p class="small" data-i18n="admissions_step2_text">
+            Players may be invited for a football assessment or interview.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="admissions_step3_title">3. Acceptance</h3>
+          <p class="small" data-i18n="admissions_step3_text">
+            Successful applicants receive an offer and payment instructions.
           </p>
         </div>
       </div>
 
-      <div style="margin-top:18px" class="callout">
+      <div class="callout" style="margin-top:18px">
         <strong>Important Information</strong>
         <p class="sub" style="margin-top:8px">
           All applicants must provide accurate personal and medical information. Parental consent is required for minors.
         </p>
-      </div>
 
-      <!-- Enrolment Form -->
-      <div style="margin-top:18px" id="enrol">
-
-        <form name="enrolment" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" class="card">
-
-          <input type="hidden" name="form-name" value="enrolment" />
-
-          <p style="display:none;">
-            <label>Don’t fill this out: <input name="bot-field" /></label>
+        <div style="margin-top:12px">
+          <strong>Fees & Payment Options</strong>
+          <p class="sub" style="margin-top:8px">
+            Global Sport Academy offers flexible payment options. Fees are payable in advance and may be paid monthly, twice yearly (6 months), or yearly. Discounts apply for advance payments.
           </p>
 
-          <div class="grid grid-2">
-            <div>
-              <label>Parent / Guardian Full Name</label>
-              <input class="input" type="text" name="parent_name" required>
-            </div>
-
-            <div>
-              <label>Email</label>
-              <input class="input" type="email" name="email" required>
-            </div>
+          <div style="margin-top:12px">
+            <a class="btn" href="fees.html">View Fees & Subscriptions</a>
+            <a class="btn gold" href="fees.html#pay">Request Payment Details</a>
           </div>
-
-          <div class="grid grid-2" style="margin-top:12px;">
-            <div>
-              <label>Phone (WhatsApp)</label>
-              <input class="input" type="text" name="phone" required placeholder="+237...">
-            </div>
-
-            <div>
-              <label>Request Type</label>
-              <select class="input" name="request_type" required>
-                <option value="">Select…</option>
-                <option>Enrolment</option>
-                <option>Trial Session</option>
-                <option>Talent Identification Camp</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-2" style="margin-top:12px;">
-            <div>
-              <label>Player Full Name</label>
-              <input class="input" type="text" name="player_name" required>
-            </div>
-
-            <div>
-              <label>Gender</label>
-              <select class="input" name="gender" required>
-                <option value="">Select…</option>
-                <option>Boy</option>
-                <option>Girl</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-2" style="margin-top:12px;">
-            <div>
-              <label>Age</label>
-              <input class="input" type="number" name="age" min="4" max="25" required>
-            </div>
-
-            <div>
-              <label>Program</label>
-              <select class="input" name="program" required>
-                <option value="">Select…</option>
-                <option>Football Academy (6–19)</option>
-                <option>Education & Sport Science (16+)</option>
-                <option>Dual Pathway (Football + Education)</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-top:12px;">
-            <label>Message (optional)</label>
-            <textarea class="input" name="message" rows="6" placeholder="Any notes, preferred dates, medical info, etc."></textarea>
-          </div>
-
-          <div style="margin-top:14px;">
-            <button class="btn primary" type="submit">Submit Enrolment Request</button>
-          </div>
-
-        </form>
-
+        </div>
       </div>
-      <!-- End Enrolment Form -->
+
+      <div class="callout" style="margin-top:18px">
+        <strong>Fees & Subscriptions</strong>
+        <p class="sub" style="margin-top:8px">
+          Before submitting an enrolment request, please review our fees, payment options, and discounts.
+        </p>
+
+        <div style="margin-top:12px">
+          <a class="btn" href="fees.html">View Fees</a>
+          <a class="btn gold" href="fees.html#pay">Request Payment Details</a>
+        </div>
+      </div>
+
+      <div class="hr" style="margin:22px 0;"></div>
+
+      <h2 class="h2" id="enrol" data-i18n="admissions_enrol_title">Enrolment Form</h2>
+      <p class="sub" data-i18n="admissions_enrol_sub">
+        Submit this form to request enrolment. Our team will contact you with next steps.
+      </p>
+
+      <form name="admissions" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" class="card">
+        <input type="hidden" name="form-name" value="admissions" />
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="grid grid-2">
+          <div>
+            <label>Parent / Guardian Full Name</label>
+            <input class="input" type="text" name="parent_name" required>
+          </div>
+          <div>
+            <label>Email</label>
+            <input class="input" type="email" name="email" required>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:12px;">
+          <div>
+            <label>Phone (WhatsApp)</label>
+            <input class="input" type="text" name="phone" required placeholder="+237...">
+          </div>
+          <div>
+            <label>Child Full Name</label>
+            <input class="input" type="text" name="child_name" required>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:12px;">
+          <div>
+            <label>Child Age</label>
+            <input class="input" type="number" name="child_age" required>
+          </div>
+          <div>
+            <label>Program of Interest</label>
+            <select class="input" name="program" required>
+              <option value="">Select…</option>
+              <option>Football Academy — Standard</option>
+              <option>Football Academy — Elite</option>
+              <option>Dual Pathway (Football + Education)</option>
+              <option>Sport Science Course (16+)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:12px;">
+          <div>
+            <label>Preferred Payment Option</label>
+            <select class="input" name="payment_option" required>
+              <option value="">Select…</option>
+              <option>Monthly</option>
+              <option>6 Months (5% off fees)</option>
+              <option>Yearly (10% off fees)</option>
+            </select>
+          </div>
+          <div>
+            <label>Start Month</label>
+            <input class="input" type="month" name="start_month" required>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Medical Information (optional)</label>
+          <textarea class="input" name="medical" rows="4" placeholder="Allergies, injuries, or medical conditions"></textarea>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Additional Notes (optional)</label>
+          <textarea class="input" name="notes" rows="6" placeholder="Any questions or comments..."></textarea>
+        </div>
+
+        <div style="margin-top:14px;">
+          <button class="btn primary" type="submit">Submit Enrolment Request</button>
+        </div>
+      </form>
 
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-
       <div class="cols">
         <div>
           <div class="brand" style="margin-bottom:10px">
@@ -221,7 +249,6 @@
               <span data-i18n="tagline">From Africa to the World</span>
             </div>
           </div>
-
           <p class="small" data-i18n="foot_about">
             Global Sport Academy is based in Ngaoundéré, Cameroon, and delivers elite football training alongside accredited education programs.
           </p>
@@ -233,7 +260,7 @@
             <a href="football.html" data-i18n="nav_football">Football</a><br/>
             <a href="education.html" data-i18n="nav_education">Education</a><br/>
             <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
-            <a href="donations.html" data-i18n="nav_donations">Donations</a>
+            <a href="fees.html" data-i18n="nav_fees">Fees</a>
           </p>
         </div>
 
@@ -251,14 +278,11 @@
         © <span id="year"></span> Global Sport Academy.
         <span data-i18n="foot_rights">All rights reserved.</span>
       </div>
-
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 
 </body>
 </html>
