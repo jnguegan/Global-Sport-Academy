@@ -65,8 +65,8 @@ select option{color:#0b1220}
 }
 .nav{
   display:flex; align-items:center; justify-content:space-between;
-  padding:10px 0;   /* tighter header */
-  gap:14px;
+  padding:6px 0;   /* tighter header */
+  gap:8px;
 }
 .brand{
   display:flex; align-items:center; gap:12px;
