@@ -123,8 +123,7 @@
       <!-- Partnership Form -->
       <div style="margin-top:18px">
 
-        <form name="partnerships" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html" class="card">
-
+        <form name="partnerships" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" class="card">
           <input type="hidden" name="form-name" value="partnerships" />
 
           <p style="display:none;">
@@ -156,24 +155,150 @@
           </div>
 
           <div style="margin-top:12px;">
-  <label>Partnership Interest</label>
-  <select class="input" name="interest" required>
-    <option value="">Select…</option>
-    <option>Club Collaboration / Pathway</option>
-    <option>Scouting / Talent Identification</option>
-    <option>Education / Certification Partner</option>
-    <option>Sponsorship / Brand Partner</option>
-    <option>Equipment Partner</option>
-    <option>Other</option>
-  </select>
-</div>
+            <label>Partnership Interest</label>
+            <select class="input" name="interest" required>
+              <option value="">Select…</option>
+              <option>Club Collaboration / Pathway</option>
+              <option>Scouting / Talent Identification</option>
+              <option>Education / Certification Partner</option>
+              <option>Sponsorship / Brand Partner</option>
+              <option>Equipment Partner</option>
+              <option>Other</option>
+            </select>
+          </div>
 
-<div style="margin-top:12px;">
-  <label>Message</label>
-  <textarea class="input" name="message" rows="7" required placeholder="Tell us what you propose and the next step."></textarea>
-</div>
+          <div style="margin-top:12px;">
+            <label>Message</label>
+            <textarea class="input" name="message" rows="7" required placeholder="Tell us what you propose and the next step."></textarea>
+          </div>
 
-<div style="margin-top:14px;">
-  <button class="btn primary" type="submit">Send Partnership Request</button>
-</div>
+          <!-- Live Summary -->
+          <div class="callout" id="partnerSummary" style="margin-top:16px; display:none;">
+            <strong>Review Your Partnership Request</strong>
+            <p class="sub" style="margin-top:8px">Please confirm before submitting.</p>
 
+            <div class="grid grid-2" style="margin-top:12px">
+              <div class="small">
+                <strong>Organization:</strong> <span id="p_sum_org">—</span><br/>
+                <strong>Website:</strong> <span id="p_sum_web">—</span><br/>
+                <strong>Contact:</strong> <span id="p_sum_name">—</span><br/>
+                <strong>Email:</strong> <span id="p_sum_email">—</span>
+              </div>
+              <div class="small">
+                <strong>Interest:</strong> <span id="p_sum_interest">—</span><br/>
+                <strong>Message:</strong> <span id="p_sum_msg">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy Confirmation -->
+          <div class="callout" style="margin-top:14px">
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="policy_confirm" required style="margin-top:4px;">
+              <span class="small">
+                I confirm this enquiry is made in good faith and I agree to safeguarding and child protection standards when engaging with Global Sport Academy.
+              </span>
+            </label>
+          </div>
+
+          <div style="margin-top:14px;">
+            <button class="btn primary" type="submit">Send Partnership Request</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
+            <div class="brand-text">
+              <strong>GLOBAL SPORT ACADEMY</strong>
+              <span data-i18n="tagline">From Africa to the World</span>
+            </div>
+          </div>
+          <p class="small" data-i18n="foot_about">...</p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
+          <p class="small">
+            <a href="football.html" data-i18n="nav_football">Football</a><br/>
+            <a href="education.html" data-i18n="nav_education">Education</a><br/>
+            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
+            <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          </p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
+          <p class="small">
+            Ngaoundéré, Adamaoua, Cameroon<br/>
+            <a href="contact.html" data-i18n="cta_contact">Contact</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="notice">© <span id="year"></span> Global Sport Academy. <span data-i18n="foot_rights">All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <!-- Partnerships form live summary -->
+  <script>
+  (function () {
+    const form = document.querySelector('form[name="partnerships"]');
+    if (!form) return;
+
+    const summary = document.getElementById('partnerSummary');
+    const out = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val && String(val).trim() ? val : '—';
+    };
+
+    const getVal = (name) => {
+      const el = form.elements[name];
+      if (!el) return '';
+      if (el.tagName === 'SELECT') {
+        const opt = el.options[el.selectedIndex];
+        return opt ? opt.textContent.trim() : '';
+      }
+      return el.value || '';
+    };
+
+    const update = () => {
+      const org = getVal('org');
+      const web = getVal('website');
+      const name = getVal('contact_person');
+      const email = getVal('email');
+      const interest = getVal('interest');
+      const msg = getVal('message');
+
+      out('p_sum_org', org);
+      out('p_sum_web', web);
+      out('p_sum_name', name);
+      out('p_sum_email', email);
+      out('p_sum_interest', interest);
+      out('p_sum_msg', msg ? (msg.length > 90 ? msg.slice(0, 90) + "…" : msg) : "");
+
+      const hasAny = [org,web,name,email,interest,msg].some(v => v && String(v).trim());
+      summary.style.display = hasAny ? '' : 'none';
+    };
+
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    update();
+  })();
+  </script>
+
+</body>
+</html>
