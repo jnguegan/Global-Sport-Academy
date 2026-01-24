@@ -172,7 +172,7 @@
             <textarea class="input" name="message" rows="7" required placeholder="Tell us what you propose and the next step."></textarea>
           </div>
 
-          <!-- Live Summary -->
+          <!-- Review Panel (Live) -->
           <div class="callout" id="partnerSummary" style="margin-top:16px; display:none;">
             <strong>Review Your Partnership Request</strong>
             <p class="sub" style="margin-top:8px">Please confirm before submitting.</p>
@@ -191,7 +191,7 @@
             </div>
           </div>
 
-          <!-- Policy Confirmation -->
+          <!-- Policy Confirmation (Required) -->
           <div class="callout" style="margin-top:14px">
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="policy_confirm" required style="margin-top:4px;">
@@ -253,7 +253,7 @@
   <script src="assets/js/main.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 
-  <!-- Partnerships form live summary -->
+  <!-- Partnerships: Live Summary Logic -->
   <script>
   (function () {
     const form = document.querySelector('form[name="partnerships"]');
@@ -272,7 +272,7 @@
         const opt = el.options[el.selectedIndex];
         return opt ? opt.textContent.trim() : '';
       }
-      return el.value || '';
+      return (el.value || '').trim();
     };
 
     const update = () => {
@@ -290,7 +290,7 @@
       out('p_sum_interest', interest);
       out('p_sum_msg', msg ? (msg.length > 90 ? msg.slice(0, 90) + "…" : msg) : "");
 
-      const hasAny = [org,web,name,email,interest,msg].some(v => v && String(v).trim());
+      const hasAny = [org, web, name, email, interest, msg].some(v => v && String(v).trim());
       summary.style.display = hasAny ? '' : 'none';
     };
 
