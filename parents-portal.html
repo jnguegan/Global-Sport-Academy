@@ -4,10 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Parents Portal — Global Sport Academy</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+
   <div class="topbar">
     <div class="container">
       <div class="row">
@@ -45,6 +50,7 @@
           <a href="education.html" data-i18n="nav_education">Education</a>
           <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
           <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
+          <a href="fees.html" data-i18n="nav_fees">Fees</a>
           <a href="donations.html" data-i18n="nav_donations">Donations</a>
           <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
           <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
@@ -52,42 +58,222 @@
         </div>
 
         <div class="nav-cta">
-          <a class="btn primary" href="admissions.html" data-i18n="cta_enrol">Enrol Now</a>
-          <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
+          <a class="btn primary" href="admissions.html#enrol">Enrol Now</a>
+          <a class="btn gold" href="fees.html#pay">Request Payment</a>
         </div>
       </nav>
     </div>
   </header>
 
-
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumb"><a href="index.html" data-i18n="nav_home">Home</a><span>›</span><span data-i18n="nav_portal">Page</span></div>
-      <h1 class="h1" data-i18n="portal_h1">Title</h1>
-      <p class="lead" data-i18n="portal_lead">Lead</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>›</span><span>Parents Portal</span>
+      </div>
+      <h1 class="h1">Parents Portal</h1>
+      <p class="lead">
+        Request access, send private messages, and manage subscriptions. (Portal v1 — dashboard preview)
+      </p>
       <div class="hero-actions">
-        <a class="btn primary" href="admissions.html" data-i18n="cta_enrol">Enrol Now</a>
-        <a class="btn" href="partnerships.html" data-i18n="cta_partner">Become a Partner</a>
-        <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
+        <a class="btn primary" href="#access">Request Access</a>
+        <a class="btn" href="#messages">Send Message</a>
+        <a class="btn gold" href="fees.html#pay">Request Payment</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="access">
     <div class="container">
       <div class="grid grid-2">
         <div class="card">
-          <h3>Portal Features (Launch UI)</h3>
-          <p>Subscription history, payment receipts, private messages to the academy, child profile and document uploads.</p>
-        </div>
-        <div class="card">
-          <h3>Login (UI Shell)</h3>
-          <form class="form">
-            <input class="input" type="email" placeholder="Email" />
-            <input class="input" type="password" placeholder="Password" />
-            <button class="btn primary" type="button">Sign In (placeholder)</button>
+          <h2 class="h2">Request Portal Access</h2>
+          <p class="sub">We will create your parent account and send secure access instructions.</p>
+
+          <form name="portal-access" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" style="margin-top:14px">
+            <input type="hidden" name="form-name" value="portal-access" />
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <div class="grid grid-2">
+              <div>
+                <label>Parent / Guardian Full Name</label>
+                <input class="input" type="text" name="parent_name" required>
+              </div>
+              <div>
+                <label>Email</label>
+                <input class="input" type="email" name="email" required>
+              </div>
+            </div>
+
+            <div class="grid grid-2" style="margin-top:12px;">
+              <div>
+                <label>Phone (WhatsApp)</label>
+                <input class="input" type="text" name="phone" required placeholder="+237...">
+              </div>
+              <div>
+                <label>Child Name</label>
+                <input class="input" type="text" name="child_name" required>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label>Notes (optional)</label>
+              <textarea class="input" name="notes" rows="5" placeholder="Any useful info (program, start month, etc.)"></textarea>
+            </div>
+
+            <div class="callout" style="margin-top:14px">
+              <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+                <input type="checkbox" name="policy_confirm" required style="margin-top:4px;">
+                <span class="small">
+                  I agree to academy policies, safeguarding standards, and data handling for parent communication.
+                </span>
+              </label>
+            </div>
+
+            <div style="margin-top:14px;">
+              <button class="btn primary" type="submit">Request Access</button>
+            </div>
           </form>
-          <p style="margin-top:10px; color:#64748b; font-size:13px">Note: Authentication will be implemented when you choose the portal backend (Netlify Identity, Firebase, etc.).</p>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Dashboard Preview</h2>
+          <p class="sub">This is how the parent dashboard will look once accounts are activated.</p>
+
+          <div class="grid grid-3" style="margin-top:14px">
+            <div class="card">
+              <h3 style="margin:0">Current Plan</h3>
+              <p class="small" style="margin-top:8px"><strong>Football Academy — Standard</strong></p>
+              <p class="small">Paid in advance</p>
+            </div>
+            <div class="card">
+              <h3 style="margin:0">Insurance</h3>
+              <p class="small" style="margin-top:8px"><strong>Annual</strong></p>
+              <p class="small">Active this year</p>
+            </div>
+            <div class="card">
+              <h3 style="margin:0">Next Step</h3>
+              <p class="small" style="margin-top:8px">Request payment details</p>
+              <a class="btn gold" style="margin-top:10px" href="fees.html#pay">Pay / Request</a>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Subscription History (Preview)</strong>
+            <p class="sub" style="margin-top:8px">When connected, parents will see a full payment history here.</p>
+
+            <div style="overflow:auto; margin-top:10px">
+              <table style="width:100%; border-collapse:collapse; font-size:14px">
+                <thead>
+                  <tr>
+                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Date</th>
+                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Item</th>
+                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Period</th>
+                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Amount</th>
+                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
+                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">Subscription</td>
+                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
+                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
+                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="messages">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <h2 class="h2">Send a Private Message</h2>
+          <p class="sub">Use this to communicate privately with the academy team.</p>
+
+          <form name="portal-message" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" style="margin-top:14px">
+            <input type="hidden" name="form-name" value="portal-message" />
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <div class="grid grid-2">
+              <div>
+                <label>Your Name</label>
+                <input class="input" type="text" name="name" required>
+              </div>
+              <div>
+                <label>Email</label>
+                <input class="input" type="email" name="email" required>
+              </div>
+            </div>
+
+            <div class="grid grid-2" style="margin-top:12px;">
+              <div>
+                <label>Child Name (optional)</label>
+                <input class="input" type="text" name="child_name">
+              </div>
+              <div>
+                <label>Topic</label>
+                <select class="input" name="topic" required>
+                  <option value="">Select…</option>
+                  <option>Fees / Payments</option>
+                  <option>Training / Schedule</option>
+                  <option>Medical / Injury</option>
+                  <option>School / Education</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label>Message</label>
+              <textarea class="input" name="message" rows="6" required></textarea>
+            </div>
+
+            <div style="margin-top:14px;">
+              <button class="btn primary" type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2 class="h2">Fast Actions</h2>
+          <p class="sub">Quick links parents use most.</p>
+
+          <div class="grid grid-2" style="margin-top:14px">
+            <a class="card" href="fees.html">
+              <h3 style="margin:0">View Fees</h3>
+              <p class="small" style="margin-top:8px">Programs, options, discounts</p>
+            </a>
+            <a class="card" href="fees.html#pay">
+              <h3 style="margin:0">Request Payment</h3>
+              <p class="small" style="margin-top:8px">Get payment instructions</p>
+            </a>
+            <a class="card" href="admissions.html#enrol">
+              <h3 style="margin:0">Enrol a Child</h3>
+              <p class="small" style="margin-top:8px">Submit an application</p>
+            </a>
+            <a class="card" href="contact.html">
+              <h3 style="margin:0">Contact</h3>
+              <p class="small" style="margin-top:8px">Reach the academy team</p>
+            </a>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>Coming Next</strong>
+            <p class="sub" style="margin-top:8px">
+              Parent login, payment receipts, downloadable invoices, subscription history, and secure messaging inside the portal.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -98,13 +284,15 @@
       <div class="cols">
         <div>
           <div class="brand" style="margin-bottom:10px">
-            <img src="assets/images/logo-white.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
+            <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
             <div class="brand-text">
               <strong>GLOBAL SPORT ACADEMY</strong>
               <span data-i18n="tagline">From Africa to the World</span>
             </div>
           </div>
-          <p class="small" data-i18n="foot_about">...</p>
+          <p class="small" data-i18n="foot_about">
+            Global Sport Academy (GSA) is a dual-pathway football and sport science institute based in Ngaoundéré, Cameroon.
+          </p>
         </div>
 
         <div>
@@ -113,7 +301,7 @@
             <a href="football.html" data-i18n="nav_football">Football</a><br/>
             <a href="education.html" data-i18n="nav_education">Education</a><br/>
             <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
-            <a href="donations.html" data-i18n="nav_donations">Donations</a>
+            <a href="fees.html" data-i18n="nav_fees">Fees</a>
           </p>
         </div>
 
@@ -135,6 +323,3 @@
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
-
-
