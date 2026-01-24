@@ -288,4 +288,59 @@ select option{color:#0b1220}
 #enrolSummary .sub {
   color: #4a5b76;
 }
+/* =========================================================
+   Form Review / Summary Panels (Admissions, Partnerships,
+   Donations, Fees, Parents Portal)
+   Ensures readable text on light gradient backgrounds
+   ========================================================= */
+
+.callout strong,
+.callout .small,
+.callout p,
+.callout span,
+.callout label {
+  color: #07162c !important;
+}
+
+.callout input[type="checkbox"] + span {
+  color: #07162c !important;
+}
+
+/* Specific review panel IDs (future-proof standard) */
+
+#reviewBox,
+#partnerSummary,
+#donationSummary,
+#feesSummary,
+#portalSummary {
+  color: #07162c !important;
+}
+
+#reviewBox strong,
+#partnerSummary strong,
+#donationSummary strong,
+#feesSummary strong,
+#portalSummary strong {
+  color: #07162c !important;
+}
+
+/* Headings inside summary panels */
+
+#reviewBox h3,
+#partnerSummary h3,
+#donationSummary h3,
+#feesSummary h3,
+#portalSummary h3 {
+  color: #07162c !important;
+}
+
+/* Subtext / muted lines inside summary panels */
+
+#reviewBox .muted,
+#partnerSummary .muted,
+#donationSummary .muted,
+#feesSummary .muted,
+#portalSummary .muted {
+  color: #4b5f7a !important;
+}
 
