@@ -68,16 +68,29 @@
     }
     .portal-linkitem em{font-style:normal; opacity:.8; font-size:12px}
     .portal-form input, .portal-form textarea, .portal-form select{
-      width:100%;
-      padding:12px;
-      margin-bottom:12px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      outline:none;
-      font-size:14px;
-    }
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:10px;
+
+  /* readable on white cards */
+  background:#ffffff;
+  color:#07162c;
+
+  border:1px solid rgba(7,22,44,.18);
+  outline:none;
+  font-size:14px;
+}
+
+.portal-form input::placeholder,
+.portal-form textarea::placeholder{
+  color:rgba(7,22,44,.55);
+}
+
+.portal-form select{
+  color:#07162c;
+}
+
     .portal-form textarea{min-height:110px; resize:vertical}
     .portal-check{
       display:flex; gap:10px; align-items:flex-start;
@@ -527,3 +540,4 @@
   </script>
 </body>
 </html>
+
