@@ -2,328 +2,329 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fees & Subscriptions — Global Sport Academy</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fees | Global Sport Academy</title>
+  <meta name="description" content="Global Sport Academy fees, payment options, scholarships and policies." />
 
-  <!-- Favicons -->
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+  <style>
+    :root{
+      --bg:#07162c;
+      --panel:#0b1d3a;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --accent:#d4b996;
+      --shadow:0 0 25px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:linear-gradient(180deg, var(--bg), #040b16);
+      color:var(--text);
+    }
+    a{color:var(--accent); text-decoration:none}
+    .wrap{max-width:980px; margin:0 auto; padding:28px 16px 80px}
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:10px 0 20px;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(212,185,150,.15);
+      border:1px solid rgba(212,185,150,.35);
+      display:grid; place-items:center;
+      font-weight:800; color:var(--accent);
+    }
+    .brand h1{font-size:18px; margin:0}
+    .brand p{margin:0; color:var(--muted); font-size:13px}
+
+    .panel{
+      background:var(--panel);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .hero h2{margin:0 0 6px; font-size:24px}
+    .hero p{margin:0; color:var(--muted); line-height:1.5}
+
+    .grid{display:grid; gap:18px; margin-top:18px}
+    @media(min-width:900px){
+      .grid.two{grid-template-columns:1fr 1fr}
+    }
+
+    .section-title{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin:0 0 14px;
+    }
+    .section-title h3{margin:0; font-size:18px}
+    .badge{
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      background:rgba(212,185,150,.15);
+      border:1px solid rgba(212,185,150,.35);
+      color:var(--accent);
+      white-space:nowrap;
+    }
+
+    .table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .table th, .table td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      vertical-align:top;
+      font-size:14px;
+    }
+    .table th{
+      background:rgba(255,255,255,.05);
+      color:rgba(255,255,255,.9);
+      font-weight:800;
+    }
+    .table tr:last-child td{border-bottom:none}
+
+    .note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .cta{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;
+    }
+    .btn{
+      background:var(--accent);
+      border:none;
+      color:#07162c;
+      font-weight:900;
+      border-radius:10px;
+      padding:11px 14px;
+      cursor:pointer;
+      display:inline-block;
+    }
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      font-weight:800;
+    }
+
+    .faq details{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px 14px;
+      margin-bottom:10px;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight:900;
+      color:rgba(255,255,255,.95);
+    }
+    .faq p{margin:10px 0 0; color:var(--muted); line-height:1.5}
+
+    footer{
+      margin-top:26px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+  </style>
 </head>
+
 <body>
-
-  <div class="topbar">
-    <div class="container">
-      <div class="row">
-        <div class="badges">
-          <span class="badge" data-i18n="top_location">Ngaoundéré • Adamaoua • Cameroon</span>
-          <span class="badge" data-i18n="top_school">Based at Global Management School</span>
-        </div>
-        <div class="lang">
-          <span style="opacity:.85">Language</span>
-          <select id="langSelect" aria-label="Select language">
-            <option value="en">EN</option>
-            <option value="fr">FR</option>
-            <option value="es">ES</option>
-          </select>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">GSA</div>
+        <div>
+          <h1>Fees & Payments</h1>
+          <p>Global Sport Academy • Clear pricing, scholarships, and policies</p>
         </div>
       </div>
+      <a class="badge" href="index.html">← Back to Website</a>
+    </header>
+
+    <div class="panel hero">
+      <h2>Fees (Season 2026)</h2>
+      <p>
+        Our fee structure is designed to be fair, transparent, and accessible. Scholarships and payment plans
+        are available for families who need support.
+      </p>
     </div>
+
+    <div class="grid two">
+      <section class="panel">
+        <div class="section-title">
+          <h3>A) Enrollment & One-Off Fees</h3>
+          <span class="badge">One-time / Annual</span>
+        </div>
+
+        <table class="table" aria-label="Enrollment fees">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Amount</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Registration</td>
+              <td>€50</td>
+              <td>One-off (new players)</td>
+            </tr>
+            <tr>
+              <td>Uniform Kit</td>
+              <td>€75</td>
+              <td>2 kits (top + shorts + socks)</td>
+            </tr>
+            <tr>
+              <td>Insurance</td>
+              <td>€30</td>
+              <td>Annual coverage (academy activities)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="note">
+          Note: Families joining mid-season may receive pro-rated fees depending on the start date.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h3>B) Monthly Training Fees</h3>
+          <span class="badge">Monthly</span>
+        </div>
+
+        <table class="table" aria-label="Monthly training fees">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Includes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>U10 – U13</td>
+              <td>€40 / month</td>
+              <td>Training sessions + match preparation</td>
+            </tr>
+            <tr>
+              <td>U14 – U17</td>
+              <td>€50 / month</td>
+              <td>Training sessions + match preparation</td>
+            </tr>
+            <tr>
+              <td>Elite Program</td>
+              <td>€80 / month</td>
+              <td>Advanced training + performance reviews</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cta">
+          <a class="btn" href="admissions.html">Apply Now</a>
+          <a class="btn secondary" href="parents.html">Parents Portal</a>
+        </div>
+
+        <p class="note">
+          Payment due by the <strong>5th</strong> of each month. If you need a payment plan, contact us via the Parents Portal.
+        </p>
+      </section>
+    </div>
+
+    <div class="grid two">
+      <section class="panel">
+        <div class="section-title">
+          <h3>C) Scholarships & Support</h3>
+          <span class="badge">Available</span>
+        </div>
+
+        <p class="note" style="margin-top:0;">
+          We offer scholarships for talented players and families facing financial difficulty.
+          Scholarships may cover partial or full monthly fees.
+        </p>
+
+        <table class="table" aria-label="Scholarship types">
+          <thead>
+            <tr>
+              <th>Scholarship Type</th>
+              <th>Eligibility</th>
+              <th>Decision</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Need-based</td>
+              <td>Family financial situation</td>
+              <td>Within 7–14 days</td>
+            </tr>
+            <tr>
+              <td>Performance-based</td>
+              <td>Coach evaluation & commitment</td>
+              <td>Monthly review</td>
+            </tr>
+            <tr>
+              <td>Sponsored slot</td>
+              <td>Funded by partners / donors</td>
+              <td>As available</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cta">
+          <a class="btn" href="admissions.html#scholarship">Apply for Scholarship</a>
+          <a class="btn secondary" href="donate.html">Sponsor a Player</a>
+        </div>
+
+        <p class="note">
+          Important: Scholarship applicants must agree to the Academy Code of Conduct and attendance requirements.
+        </p>
+      </section>
+
+      <section class="panel faq">
+        <div class="section-title">
+          <h3>D) FAQs</h3>
+          <span class="badge">Quick answers</span>
+        </div>
+
+        <details>
+          <summary>Can I pay weekly instead of monthly?</summary>
+          <p>Phase 1: monthly is preferred. If you need weekly payments, contact the Academy and we’ll arrange a plan.</p>
+        </details>
+
+        <details>
+          <summary>Do you offer sibling discounts?</summary>
+          <p>Yes, where possible. Discounts depend on the category and family situation.</p>
+        </details>
+
+        <details>
+          <summary>What happens if we miss a payment?</summary>
+          <p>We’ll contact you privately to find a solution. We aim to support families, not punish them.</p>
+        </details>
+
+        <details>
+          <summary>Is the uniform mandatory?</summary>
+          <p>Yes, for official training and matches. If needed, we can provide support through our scholarship program.</p>
+        </details>
+      </section>
+    </div>
+
+    <footer>
+      © Global Sport Academy • Fees & Payments
+    </footer>
   </div>
-
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <a class="brand" href="index.html">
-          <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo">
-          <div class="brand-text">
-            <strong>GSA</strong>
-            <span data-i18n="tagline">From Africa to the World</span>
-          </div>
-        </a>
-
-        <button class="mobile-toggle" id="mobileToggle" type="button">Menu</button>
-
-        <div class="navlinks" aria-label="Primary navigation">
-          <a href="index.html" data-i18n="nav_home">Home</a>
-          <a href="about.html" data-i18n="nav_about">About</a>
-          <a href="football.html" data-i18n="nav_football">Football</a>
-          <a href="education.html" data-i18n="nav_education">Education</a>
-          <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
-          <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
-          <a href="fees.html" data-i18n="nav_fees">Fees</a>
-          <a href="donations.html" data-i18n="nav_donations">Donations</a>
-          <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
-          <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
-          <a href="contact.html" data-i18n="nav_contact">Contact</a>
-        </div>
-
-        <div class="nav-cta">
-          <a class="btn primary" href="admissions.html#enrol" data-i18n="cta_enrol">Enrol Now</a>
-          <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="index.html" data-i18n="nav_home">Home</a>
-        <span>›</span>
-        <span data-i18n="nav_fees">Fees</span>
-      </div>
-
-      <h1 class="h1" data-i18n="fees_h1">Fees & Subscriptions</h1>
-      <p class="lead" data-i18n="fees_lead">
-        Transparent fees with flexible payment options. All fees are payable in advance (monthly, twice yearly, or yearly).
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn primary" href="admissions.html#enrol" data-i18n="cta_enrol">Enrol Now</a>
-        <a class="btn" href="#overview" data-i18n="fees_jump_overview">View Fees</a>
-        <a class="btn gold" href="#pay" data-i18n="fees_jump_pay">Request Payment</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="overview">
-    <div class="container">
-
-      <div class="callout">
-        <strong data-i18n="fees_policy_title">Payment Policy</strong>
-        <p class="sub" style="margin-top:8px" data-i18n="fees_policy_text">
-          Fees are payable in advance. Families may pay monthly, twice yearly (6 months), or yearly. Discounts apply to 6-month and yearly payments (fees only).
-        </p>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:18px">
-        <div class="card">
-          <h3 data-i18n="fees_reg_title">Registration Fee (one-time)</h3>
-          <p class="sub" data-i18n="fees_reg_desc">Paid once upon acceptance and onboarding.</p>
-          <p style="margin-top:10px"><strong>20,000 XAF</strong> <span class="small">(≈ €30)</span></p>
-        </div>
-
-        <div class="card">
-          <h3 data-i18n="fees_ins_title">Insurance & Medical Cover (annual)</h3>
-          <p class="sub" data-i18n="fees_ins_desc">Compulsory, paid once per calendar year in advance.</p>
-          <p style="margin-top:10px"><strong>15,000 XAF</strong> <span class="small">(≈ €23)</span></p>
-        </div>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:18px">
-        <div class="card">
-          <h3 data-i18n="fees_matchkit_title">Official Match Kit (compulsory)</h3>
-          <p class="sub" data-i18n="fees_matchkit_desc">Official jersey, shorts, and socks for matches and tournaments.</p>
-          <p style="margin-top:10px"><strong>20,000 XAF</strong> <span class="small">(≈ €30)</span></p>
-        </div>
-
-        <div class="card">
-          <h3 data-i18n="fees_trainingkit_title">Training Kit (optional)</h3>
-          <p class="sub" data-i18n="fees_trainingkit_desc">Optional training wear; players may train in their own sportswear.</p>
-          <p style="margin-top:10px"><strong>15,000 XAF</strong> <span class="small">(≈ €23)</span></p>
-        </div>
-      </div>
-
-      <div class="hr" style="margin:22px 0;"></div>
-
-      <h2 class="h2" data-i18n="fees_programs_title">Programs</h2>
-      <p class="sub" data-i18n="fees_programs_sub">Choose the subscription frequency that suits your family. Discounts apply to 6-month and yearly payments (fees only).</p>
-
-      <div class="grid grid-2" style="margin-top:14px">
-        <div class="card">
-          <h3 data-i18n="fees_standard_title">Football Academy — Standard</h3>
-          <p class="small" data-i18n="fees_standard_sub">2–3 sessions per week • Boys & Girls (6–19)</p>
-
-          <div style="margin-top:10px" class="small">
-            <strong>Monthly:</strong> 25,000 XAF (≈ €38)<br/>
-            <strong>6 Months (5% off):</strong> 150,000 XAF (≈ €229)<br/>
-            <strong>Yearly (10% off):</strong> 300,000 XAF (≈ €458)
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 data-i18n="fees_elite_title">Football Academy — Elite</h3>
-          <p class="small" data-i18n="fees_elite_sub">4–6 sessions per week • Boys & Girls (6–19)</p>
-
-          <div style="margin-top:10px" class="small">
-            <strong>Monthly:</strong> 45,000 XAF (≈ €69)<br/>
-            <strong>6 Months (5% off):</strong> 270,000 XAF (≈ €412)<br/>
-            <strong>Yearly (10% off):</strong> 540,000 XAF (≈ €824)
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-2" style="margin-top:18px">
-        <div class="card">
-          <h3 data-i18n="fees_dual_title">Dual Pathway (Football + Education)</h3>
-          <p class="small" data-i18n="fees_dual_sub">Football training + classroom learning + mentoring</p>
-
-          <div style="margin-top:10px" class="small">
-            <strong>Monthly:</strong> 65,000 XAF (≈ €99)<br/>
-            <strong>6 Months (5% off):</strong> 390,000 XAF (≈ €595)<br/>
-            <strong>Yearly (10% off):</strong> 780,000 XAF (≈ €1,191)
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 data-i18n="fees_courses_title">Sport Science Courses (16+)</h3>
-          <p class="small" data-i18n="fees_courses_sub">Physiotherapy • Sport Massage • Nutrition • Fitness • Coaching</p>
-
-          <div style="margin-top:10px" class="small">
-            <strong>From:</strong> 120,000 XAF per course (≈ €183)<br/>
-            <span class="small" data-i18n="fees_courses_note">Pricing depends on duration and certification level. Paid in advance.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout" style="margin-top:18px">
-        <strong data-i18n="fees_discounts_title">Discounts (fees only)</strong>
-        <p class="sub" style="margin-top:8px" data-i18n="fees_discounts_text">
-          5% discount for 6-month advance payment and 10% discount for yearly advance payment. Discounts apply to subscription fees only (not registration, kits, or insurance).
-        </p>
-      </div>
-
-      <div class="callout" style="margin-top:18px">
-        <strong data-i18n="fees_scholar_title">Scholarships & Support</strong>
-        <p class="sub" style="margin-top:8px" data-i18n="fees_scholar_text">
-          Merit-based scholarships, social support options, and sibling discounts may be available. Contact us to discuss eligibility.
-        </p>
-        <div style="margin-top:12px">
-          <a class="btn" href="contact.html" data-i18n="cta_contact">Contact Us</a>
-          <a class="btn gold" href="donations.html" data-i18n="cta_donate">Support Scholarships</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section" id="pay">
-    <div class="container">
-      <h2 class="h2" data-i18n="fees_pay_title">Request Payment / Invoice</h2>
-      <p class="sub" data-i18n="fees_pay_sub">
-        Submit this request and our team will send payment instructions (mobile money, bank, or cash office options).
-      </p>
-
-      <div style="margin-top:14px">
-        <form name="fees-payment" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" class="card">
-          <input type="hidden" name="form-name" value="fees-payment" />
-          <p style="display:none;">
-            <label>Don’t fill this out: <input name="bot-field" /></label>
-          </p>
-
-          <div class="grid grid-2">
-            <div>
-              <label>Parent / Guardian Full Name</label>
-              <input class="input" type="text" name="parent_name" required>
-            </div>
-            <div>
-              <label>Email</label>
-              <input class="input" type="email" name="email" required>
-            </div>
-          </div>
-
-          <div class="grid grid-2" style="margin-top:12px;">
-            <div>
-              <label>Phone (WhatsApp)</label>
-              <input class="input" type="text" name="phone" required placeholder="+237...">
-            </div>
-            <div>
-              <label>Payment Option</label>
-              <select class="input" name="payment_option" required>
-                <option value="">Select…</option>
-                <option>Monthly</option>
-                <option>6 Months (5% off fees)</option>
-                <option>Yearly (10% off fees)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-2" style="margin-top:12px;">
-            <div>
-              <label>Program</label>
-              <select class="input" name="program" required>
-                <option value="">Select…</option>
-                <option>Football Academy — Standard</option>
-                <option>Football Academy — Elite</option>
-                <option>Dual Pathway (Football + Education)</option>
-                <option>Sport Science Course (16+)</option>
-              </select>
-            </div>
-            <div>
-              <label>Include in Request</label>
-              <select class="input" name="include" required>
-                <option value="">Select…</option>
-                <option>Subscription Fees Only</option>
-                <option>Fees + Insurance (annual)</option>
-                <option>Fees + Match Kit</option>
-                <option>Fees + Match Kit + Insurance</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-top:12px;">
-            <label>Notes (optional)</label>
-            <textarea class="input" name="notes" rows="6" placeholder="Child name, preferred start month, course name, or any notes..."></textarea>
-          </div>
-
-          <div style="margin-top:14px;">
-            <button class="btn primary" type="submit">Request Payment Details</button>
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="cols">
-        <div>
-          <div class="brand" style="margin-bottom:10px">
-            <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
-            <div class="brand-text">
-              <strong>GLOBAL SPORT ACADEMY</strong>
-              <span data-i18n="tagline">From Africa to the World</span>
-            </div>
-          </div>
-          <p class="small" data-i18n="foot_about">
-            Global Sport Academy is based in Ngaoundéré, Cameroon, and delivers elite football training alongside accredited education programs.
-          </p>
-        </div>
-
-        <div>
-          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
-          <p class="small">
-            <a href="football.html" data-i18n="nav_football">Football</a><br/>
-            <a href="education.html" data-i18n="nav_education">Education</a><br/>
-            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
-            <a href="fees.html" data-i18n="nav_fees">Fees</a>
-          </p>
-        </div>
-
-        <div>
-          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
-          <p class="small">
-            Ngaoundéré, Adamaoua, Cameroon<br/>
-            <a href="contact.html" data-i18n="cta_contact">Contact</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="hr"></div>
-      <div class="notice">
-        © <span id="year"></span> Global Sport Academy.
-        <span data-i18n="foot_rights">All rights reserved.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-
 </body>
 </html>
