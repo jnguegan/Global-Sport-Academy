@@ -3,13 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thank You | Global Sport Academy</title>
-  <meta name="description" content="Thank you for supporting Global Sport Academy." />
+  <title>Donations | Global Sport Academy (GSA)</title>
+  <meta name="description" content="Support Global Sport Academy and help fund training, education, equipment, and community programs." />
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="badges">
+          <span class="badge" data-i18n="top_location">Ngaoundéré • Adamaoua • Cameroon</span>
+          <span class="badge" data-i18n="top_school">Based at Global Management School</span>
+        </div>
+        <div class="lang">
+          <span style="opacity:.85">Language</span>
+          <select id="langSelect" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Nav (same as index) -->
   <header class="header">
     <div class="container">
       <nav class="nav">
@@ -17,45 +38,228 @@
           <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo">
           <div class="brand-text">
             <strong>GSA</strong>
-            <span>From Africa to the World</span>
+            <span data-i18n="tagline">From Africa to the World</span>
           </div>
         </a>
 
+        <button class="mobile-toggle" id="mobileToggle" type="button">Menu</button>
+
         <div class="navlinks" aria-label="Primary navigation">
-          <a href="index.html">Home</a>
-          <a href="fees.html">Fees</a>
-          <a href="parents-portal.html">Parents Portal</a>
-          <a href="donations.html">Donations</a>
+          <a href="index.html" data-i18n="nav_home">Home</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="football.html" data-i18n="nav_football">Football</a>
+          <a href="education.html" data-i18n="nav_education">Education</a>
+          <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
+          <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
+          <a href="fees.html" data-i18n="nav_fees">Fees</a>
+          <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
+          <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a class="btn primary" href="admissions.html" data-i18n="cta_enrol">Enrol Now</a>
+          <a class="btn gold" href="#donate" data-i18n="cta_donate">Donate</a>
         </div>
       </nav>
     </div>
   </header>
 
-  <section class="section">
+  <!-- Page Hero -->
+  <section class="hero">
     <div class="container">
-      <div class="callout">
-        <h1 class="h1">Thank you 🙏</h1>
-        <p class="sub">
-          Your submission has been received. We truly appreciate your support — it helps create real opportunities
-          for young athletes through sport and education.
-        </p>
+      <div class="hero-wrap">
+        <div>
+          <div class="kicker">
+            <b data-i18n="donate_kicker_a">DONATIONS</b>
+            <span>•</span>
+            <span data-i18n="donate_kicker_b">Support Global Sport Academy</span>
+          </div>
 
-        <div style="margin-top:14px">
-          <a class="btn gold" href="donations.html">Back to Donations</a>
-          <a class="btn primary" href="index.html">Back to Home</a>
+          <h1 class="h1" data-i18n="donate_h1">Support the Next Generation of African Talent</h1>
+          <p class="lead" data-i18n="donate_sub">
+            Your donation helps fund training, education, equipment, facilities, and community programs at Global Sport Academy and BS Group Foundation.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn gold" href="#donate" data-i18n="cta_donate">Donate</a>
+            <a class="btn" href="fees.html" data-i18n="cta_fees">Fees</a>
+            <a class="btn" href="partnerships.html" data-i18n="cta_partner">Become a Partner</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <p class="mini" data-i18n="donate_card_mini">What your support funds</p>
+          <ul class="list">
+            <li><span class="dot"></span><span data-i18n="donate_w1">Training equipment and kits</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w3">Education programs</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w5">Medical and welfare support</span></li>
+          </ul>
+          <div class="pills">
+            <span class="pill">One-off</span>
+            <span class="pill">Monthly</span>
+            <span class="pill">Sponsor a player</span>
+            <span class="pill">Transparency</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Donation Form + Transparency -->
+  <section class="section" id="donate">
+    <div class="container">
+      <div class="split">
+        <!-- Form card -->
+        <div class="card">
+          <h2 class="h2" data-i18n="donate_form_title">Make a Donation</h2>
+          <p class="sub" data-i18n="donate_form_sub">
+            Choose an amount and submit. Phase 1 records donations via form submissions (Netlify summaries).
+          </p>
+
+          <div class="pills" id="amountButtons" style="margin:12px 0 12px">
+            <button class="pill" type="button" data-amount="25">€25</button>
+            <button class="pill" type="button" data-amount="50">€50</button>
+            <button class="pill" type="button" data-amount="100">€100</button>
+            <button class="pill" type="button" data-amount="custom" data-i18n="donate_custom">Custom</button>
+          </div>
+
+          <!-- Netlify form -->
+          <form name="donation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="donation" />
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <label class="small" data-i18n="donate_name">Full name</label>
+            <input name="full_name" type="text" required />
+
+            <label class="small">Email</label>
+            <input name="email" type="email" required />
+
+            <label class="small" data-i18n="donate_country">Country</label>
+            <input name="country" type="text" />
+
+            <label class="small" data-i18n="donate_type">Donation type</label>
+            <select name="donation_type" required>
+              <option value="" disabled selected data-i18n="donate_type_pick">Select…</option>
+              <option value="One-off" data-i18n="donate_oneoff">One-off</option>
+              <option value="Monthly" data-i18n="donate_monthly">Monthly</option>
+            </select>
+
+            <label class="small" data-i18n="donate_amount">Amount (€)</label>
+            <input id="amountInput" name="amount" type="number" required />
+
+            <label class="small" data-i18n="donate_message">Message (optional)</label>
+            <textarea name="message" rows="4"></textarea>
+
+            <label class="small" style="display:flex; gap:10px; align-items:flex-start; margin-top:10px">
+              <input type="checkbox" required />
+              <span data-i18n="donate_terms">
+                I agree to the Donation Terms & Privacy Policy and understand this is a voluntary contribution.
+              </span>
+            </label>
+
+            <div style="margin-top:12px">
+              <button class="btn gold" type="submit" data-i18n="donate_submit">Donate Now</button>
+            </div>
+
+            <p class="small" style="margin-top:10px; opacity:.8" data-i18n="donate_phase2">
+              Phase 2 will add secure card payments (Stripe / PayPal). For now, submissions are recorded for follow-up.
+            </p>
+          </form>
+        </div>
+
+        <!-- Transparency callout -->
+        <div class="callout">
+          <h2 class="h2" data-i18n="donate_where">Where Your Money Goes</h2>
+          <p class="sub" data-i18n="donate_where_sub">We publish impact updates and summaries to keep donors informed.</p>
+
+          <ul class="list" style="margin-top:10px">
+            <li><span class="dot"></span><span data-i18n="donate_w1">Training equipment and kits</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w2">Coaching salaries</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w3">Education programs</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w4">Facilities and pitch rental</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w5">Medical and welfare support</span></li>
+            <li><span class="dot"></span><span data-i18n="donate_w6">Community outreach projects</span></li>
+          </ul>
+
+          <p class="sub" style="margin-top:12px">
+            We are committed to full transparency. Annual impact and financial summaries will be published on this website.
+          </p>
+
+          <div style="margin-top:14px">
+            <a class="btn primary" href="fees.html" data-i18n="cta_fees">View Academy Fees</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (same as index, includes logos) -->
   <footer class="footer">
     <div class="container">
-      <div class="notice">© <span id="year"></span> Global Sport Academy. All rights reserved.</div>
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <img src="assets/images/logo-white.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
+            <div class="brand-text">
+              <strong>GLOBAL SPORT ACADEMY</strong>
+              <span data-i18n="tagline">From Africa to the World</span>
+            </div>
+          </div>
+          <p class="small" data-i18n="foot_about">...</p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
+          <p class="small">
+            <a href="football.html" data-i18n="nav_football">Football</a><br/>
+            <a href="education.html" data-i18n="nav_education">Education</a><br/>
+            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
+            <a href="fees.html" data-i18n="nav_fees">Fees</a><br/>
+            <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a><br/>
+            <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          </p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
+          <p class="small">
+            Ngaoundéré, Adamaoua, Cameroon<br/>
+            <a href="contact.html" data-i18n="cta_contact">Contact</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="notice">© <span id="year"></span> Global Sport Academy. <span data-i18n="foot_rights">All rights reserved.</span></div>
     </div>
   </footer>
 
+  <script src="assets/js/main.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Amount buttons -> fill amount input (works with your style.css pills)
+    const buttons = document.querySelectorAll("#amountButtons button");
+    const amountInput = document.getElementById("amountInput");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const val = btn.getAttribute("data-amount");
+        if (val === "custom") {
+          amountInput.value = "";
+          amountInput.focus();
+        } else {
+          amountInput.value = val;
+        }
+      });
+    });
   </script>
 </body>
 </html>
