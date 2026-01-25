@@ -2,324 +2,459 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Parents Portal — Global Sport Academy</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parents Portal | Global Sport Academy</title>
+  <meta name="description" content="Global Sport Academy Parents Portal: documents, schedules, notices, and communications." />
 
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+  <style>
+    :root{
+      --bg:#07162c;
+      --panel:#0b1d3a;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --accent:#d4b996;
+      --shadow:0 0 25px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:linear-gradient(180deg, var(--bg), #040b16);
+      color:var(--text);
+    }
+    a{color:var(--accent); text-decoration:none}
+    .wrap{max-width:980px; margin:0 auto; padding:28px 16px 80px}
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:10px 0 20px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(212,185,150,.15);
+      border:1px solid rgba(212,185,150,.35);
+      display:grid; place-items:center;
+      font-weight:800; color:var(--accent);
+    }
+    .brand h1{font-size:18px; margin:0}
+    .brand p{margin:0; color:var(--muted); font-size:13px}
+
+    .panel{
+      background:var(--panel);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .grid{display:grid; gap:18px}
+    @media(min-width:900px){
+      .grid.two{grid-template-columns:1.1fr .9fr}
+    }
+
+    .hero h2{margin:0 0 6px; font-size:24px}
+    .hero p{margin:0; color:var(--muted); line-height:1.5}
+
+    .section-title{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin:0 0 14px;
+    }
+    .section-title h3{margin:0; font-size:18px}
+    .badge{
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      background:rgba(212,185,150,.15);
+      border:1px solid rgba(212,185,150,.35);
+      color:var(--accent);
+      white-space:nowrap;
+    }
+
+    /* Notices controls */
+    .controls{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-bottom:14px;
+    }
+    .controls input, .controls select{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      border-radius:10px;
+      padding:10px 12px;
+      outline:none;
+      min-width:180px;
+    }
+    .controls input::placeholder{color:rgba(255,255,255,.55)}
+    .btn{
+      background:var(--accent);
+      border:none;
+      color:#07162c;
+      font-weight:800;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+    }
+    .btn.secondary{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      font-weight:700;
+    }
+
+    /* Notice cards */
+    .notices{display:grid; gap:12px}
+    .notice{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+    .notice.top{
+      border:1px solid rgba(212,185,150,.45);
+      background:rgba(212,185,150,.10);
+    }
+    .notice .meta{
+      display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+      margin-bottom:8px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .pill{
+      padding:4px 8px; border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.85);
+      font-size:12px;
+    }
+    .pill.urgent{
+      background:rgba(255,60,60,.12);
+      border-color:rgba(255,60,60,.25);
+      color:#ffd2d2;
+    }
+    .pill.finance{
+      background:rgba(90,200,120,.10);
+      border-color:rgba(90,200,120,.22);
+      color:#dbffe4;
+    }
+    .pill.schedule{
+      background:rgba(80,140,255,.10);
+      border-color:rgba(80,140,255,.22);
+      color:#dbe8ff;
+    }
+
+    .notice h4{margin:0 0 6px; font-size:16px}
+    .notice p{margin:0; color:var(--muted); line-height:1.5}
+
+    .notice .actions{
+      margin-top:10px; display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+    }
+    .small{font-size:12px; color:var(--muted)}
+    .ack{
+      display:flex; gap:8px; align-items:center;
+      font-size:12px; color:rgba(255,255,255,.85);
+    }
+    .ack input{transform:translateY(1px)}
+
+    /* Simple links list */
+    .links{display:grid; gap:10px}
+    .link-item{
+      padding:12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .link-item span{color:rgba(255,255,255,.9)}
+    .link-item em{color:var(--muted); font-style:normal; font-size:12px}
+
+    /* Netlify form style (optional) */
+    .form input, .form textarea, .form select{
+      width:100%;
+      padding:12px;
+      margin-bottom:12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    .form textarea{min-height:110px; resize:vertical}
+    .form .check{
+      display:flex; gap:10px; align-items:flex-start; margin:10px 0 14px;
+      color:rgba(255,255,255,.85);
+      font-size:13px;
+    }
+    footer{
+      margin-top:26px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+  </style>
 </head>
-<body>
 
-  <div class="topbar">
-    <div class="container">
-      <div class="row">
-        <div class="badges">
-          <span class="badge" data-i18n="top_location">Ngaoundéré • Adamaoua • Cameroon</span>
-          <span class="badge" data-i18n="top_school">Based at Global Management School</span>
-        </div>
-        <div class="lang">
-          <span style="opacity:.85">Language</span>
-          <select id="langSelect" aria-label="Select language">
-            <option value="en">EN</option><option value="fr">FR</option><option value="es">ES</option>
-          </select>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">GSA</div>
+        <div>
+          <h1>Parents Portal</h1>
+          <p>Global Sport Academy • Phase 1 (Static)</p>
         </div>
       </div>
+      <a class="badge" href="index.html">← Back to Website</a>
+    </header>
+
+    <div class="panel hero" style="margin-bottom:18px;">
+      <h2>Welcome, Parents 👋</h2>
+      <p>
+        This portal centralizes key documents, schedules and important updates.
+        Phase 1 is static; Phase 2 will include secure login and child-specific dashboards.
+      </p>
     </div>
+
+    <div class="grid two">
+      <!-- LEFT: D) NOTICES (MAIN) -->
+      <section class="panel">
+        <div class="section-title">
+          <h3>D) Notices & Updates</h3>
+          <span class="badge" id="countBadge">0 notices</span>
+        </div>
+
+        <div class="controls">
+          <input id="searchInput" type="text" placeholder="Search notices (e.g., schedule, payment…)" />
+          <select id="typeFilter">
+            <option value="all">All types</option>
+            <option value="urgent">Urgent</option>
+            <option value="schedule">Schedule</option>
+            <option value="finance">Finance</option>
+            <option value="general">General</option>
+          </select>
+          <select id="audienceFilter">
+            <option value="all">All groups</option>
+            <option value="U10-U13">U10–U13</option>
+            <option value="U14-U17">U14–U17</option>
+            <option value="Elite">Elite</option>
+            <option value="All">All Parents</option>
+          </select>
+
+          <button class="btn secondary" id="resetBtn" type="button">Reset</button>
+        </div>
+
+        <div class="notices" id="noticesList"></div>
+
+        <div style="margin-top:14px;" class="small">
+          Tip: “Acknowledged” is saved on this device (Phase 1). In Phase 2 it will sync to parent accounts.
+        </div>
+      </section>
+
+      <!-- RIGHT: Quick docs + optional message form -->
+      <aside class="grid">
+        <section class="panel">
+          <div class="section-title">
+            <h3>Key Documents</h3>
+            <span class="badge">Downloads</span>
+          </div>
+
+          <div class="links">
+            <div class="link-item">
+              <span>Academy Handbook (PDF)</span>
+              <em><a href="#" onclick="alert('Upload handbook.pdf then link it here'); return false;">Download</a></em>
+            </div>
+            <div class="link-item">
+              <span>Code of Conduct</span>
+              <em><a href="#" onclick="alert('Link to code-of-conduct.pdf'); return false;">Download</a></em>
+            </div>
+            <div class="link-item">
+              <span>Training Schedule</span>
+              <em><a href="#" onclick="alert('Link to schedule.pdf'); return false;">View</a></em>
+            </div>
+            <div class="link-item">
+              <span>Competition Calendar</span>
+              <em><a href="#" onclick="alert('Link to calendar.pdf'); return false;">View</a></em>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">
+            <h3>Message the Academy</h3>
+            <span class="badge">Optional</span>
+          </div>
+
+          <!-- Netlify form (optional). If you already use Netlify forms, this will work immediately. -->
+          <form class="form" name="parents-message" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="parents-message" />
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <input name="parent_name" type="text" placeholder="Your full name" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <select name="topic" required>
+              <option value="" disabled selected>Select topic…</option>
+              <option>Schedule</option>
+              <option>Fees / Payments</option>
+              <option>Medical / Injury</option>
+              <option>Discipline / Conduct</option>
+              <option>Other</option>
+            </select>
+            <textarea name="message" placeholder="Write your message…" required></textarea>
+
+            <div class="check">
+              <input id="privacy" type="checkbox" required />
+              <label for="privacy">I agree to the Privacy Policy and allow the Academy to contact me about this message.</label>
+            </div>
+
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      © Global Sport Academy • Parents Portal (Phase 1)
+    </footer>
   </div>
 
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <a class="brand" href="index.html">
-          <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo">
-          <div class="brand-text">
-            <strong>GSA</strong>
-            <span data-i18n="tagline">From Africa to the World</span>
-          </div>
-        </a>
+  <script>
+    // --- Notices dataset (edit these any time) ---
+    const notices = [
+      {
+        id: "n001",
+        pinned: true,
+        type: "urgent",
+        audience: "All",
+        date: "2026-01-25",
+        title: "Uniform fitting week (all groups)",
+        text: "Uniform fitting will run Monday–Friday, 16:00–19:00 at the Academy office. Please bring your child’s current kit for sizing reference."
+      },
+      {
+        id: "n002",
+        pinned: false,
+        type: "schedule",
+        audience: "U10-U13",
+        date: "2026-01-27",
+        title: "U10–U13 training time update",
+        text: "Tuesday training starts 30 minutes earlier this week due to pitch availability. Please arrive 15 minutes before the session."
+      },
+      {
+        id: "n003",
+        pinned: false,
+        type: "finance",
+        audience: "All",
+        date: "2026-01-28",
+        title: "Monthly fee reminder",
+        text: "Monthly training fees are due by the 5th of each month. If you need a payment plan, message the Academy using the form on this page."
+      },
+      {
+        id: "n004",
+        pinned: false,
+        type: "general",
+        audience: "Elite",
+        date: "2026-01-30",
+        title: "Elite program performance reviews",
+        text: "Elite program reviews will be shared with parents in the first week of February. Coach will schedule short 1:1 calls."
+      }
+    ];
 
-        <button class="mobile-toggle" id="mobileToggle" type="button">Menu</button>
+    const elList = document.getElementById("noticesList");
+    const elSearch = document.getElementById("searchInput");
+    const elType = document.getElementById("typeFilter");
+    const elAudience = document.getElementById("audienceFilter");
+    const elReset = document.getElementById("resetBtn");
+    const elCount = document.getElementById("countBadge");
 
-        <div class="navlinks" aria-label="Primary navigation">
-          <a href="index.html" data-i18n="nav_home">Home</a>
-          <a href="about.html" data-i18n="nav_about">About</a>
-          <a href="football.html" data-i18n="nav_football">Football</a>
-          <a href="education.html" data-i18n="nav_education">Education</a>
-          <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
-          <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
-          <a href="fees.html" data-i18n="nav_fees">Fees</a>
-          <a href="donations.html" data-i18n="nav_donations">Donations</a>
-          <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
-          <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
-          <a href="contact.html" data-i18n="nav_contact">Contact</a>
-        </div>
+    const ACK_KEY = "gsa_notice_ack_v1";
 
-        <div class="nav-cta">
-          <a class="btn primary" href="admissions.html#enrol">Enrol Now</a>
-          <a class="btn gold" href="fees.html#pay">Request Payment</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+    function loadAck() {
+      try { return JSON.parse(localStorage.getItem(ACK_KEY)) || {}; }
+      catch { return {}; }
+    }
+    function saveAck(state) {
+      localStorage.setItem(ACK_KEY, JSON.stringify(state));
+    }
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a><span>›</span><span>Parents Portal</span>
-      </div>
-      <h1 class="h1">Parents Portal</h1>
-      <p class="lead">
-        Request access, send private messages, and manage subscriptions. (Portal v1 — dashboard preview)
-      </p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#access">Request Access</a>
-        <a class="btn" href="#messages">Send Message</a>
-        <a class="btn gold" href="fees.html#pay">Request Payment</a>
-      </div>
-    </div>
-  </section>
+    function pillForType(type){
+      if(type === "urgent") return `<span class="pill urgent">Urgent</span>`;
+      if(type === "finance") return `<span class="pill finance">Finance</span>`;
+      if(type === "schedule") return `<span class="pill schedule">Schedule</span>`;
+      return `<span class="pill">General</span>`;
+    }
 
-  <section class="section" id="access">
-    <div class="container">
-      <div class="grid grid-2">
-        <div class="card">
-          <h2 class="h2">Request Portal Access</h2>
-          <p class="sub">We will create your parent account and send secure access instructions.</p>
+    function render() {
+      const q = (elSearch.value || "").trim().toLowerCase();
+      const t = elType.value;
+      const a = elAudience.value;
 
-          <form name="portal-access" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" style="margin-top:14px">
-            <input type="hidden" name="form-name" value="portal-access" />
-            <p style="display:none;">
-              <label>Don’t fill this out: <input name="bot-field" /></label>
-            </p>
+      const ack = loadAck();
 
-            <div class="grid grid-2">
-              <div>
-                <label>Parent / Guardian Full Name</label>
-                <input class="input" type="text" name="parent_name" required>
-              </div>
-              <div>
-                <label>Email</label>
-                <input class="input" type="email" name="email" required>
-              </div>
+      // pinned first, then by date desc
+      const sorted = [...notices].sort((x,y)=>{
+        if(!!y.pinned !== !!x.pinned) return (y.pinned?1:0) - (x.pinned?1:0);
+        return new Date(y.date) - new Date(x.date);
+      });
+
+      const filtered = sorted.filter(n=>{
+        const matchesQ = !q || (n.title + " " + n.text).toLowerCase().includes(q);
+        const matchesT = (t === "all") || (n.type === t);
+        const matchesA = (a === "all") || (n.audience === a) || (n.audience === "All");
+        return matchesQ && matchesT && matchesA;
+      });
+
+      elCount.textContent = `${filtered.length} notice${filtered.length===1?"":"s"}`;
+
+      elList.innerHTML = filtered.map(n=>{
+        const isAck = !!ack[n.id];
+        const cls = n.pinned ? "notice top" : "notice";
+        return `
+          <div class="${cls}">
+            <div class="meta">
+              ${pillForType(n.type)}
+              <span class="pill">Group: ${n.audience}</span>
+              <span class="pill">Date: ${n.date}</span>
+              ${n.pinned ? `<span class="pill">Pinned</span>` : ``}
             </div>
+            <h4>${n.title}</h4>
+            <p>${n.text}</p>
 
-            <div class="grid grid-2" style="margin-top:12px;">
-              <div>
-                <label>Phone (WhatsApp)</label>
-                <input class="input" type="text" name="phone" required placeholder="+237...">
-              </div>
-              <div>
-                <label>Child Name</label>
-                <input class="input" type="text" name="child_name" required>
-              </div>
-            </div>
-
-            <div style="margin-top:12px;">
-              <label>Notes (optional)</label>
-              <textarea class="input" name="notes" rows="5" placeholder="Any useful info (program, start month, etc.)"></textarea>
-            </div>
-
-            <div class="callout" style="margin-top:14px">
-              <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-                <input type="checkbox" name="policy_confirm" required style="margin-top:4px;">
-                <span class="small">
-                  I agree to academy policies, safeguarding standards, and data handling for parent communication.
-                </span>
+            <div class="actions">
+              <label class="ack">
+                <input type="checkbox" data-ack="${n.id}" ${isAck ? "checked" : ""} />
+                Acknowledged
               </label>
-            </div>
-
-            <div style="margin-top:14px;">
-              <button class="btn primary" type="submit">Request Access</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="card">
-          <h2 class="h2">Dashboard Preview</h2>
-          <p class="sub">This is how the parent dashboard will look once accounts are activated.</p>
-
-          <div class="grid grid-3" style="margin-top:14px">
-            <div class="card">
-              <h3 style="margin:0">Current Plan</h3>
-              <p class="small" style="margin-top:8px"><strong>Football Academy — Standard</strong></p>
-              <p class="small">Paid in advance</p>
-            </div>
-            <div class="card">
-              <h3 style="margin:0">Insurance</h3>
-              <p class="small" style="margin-top:8px"><strong>Annual</strong></p>
-              <p class="small">Active this year</p>
-            </div>
-            <div class="card">
-              <h3 style="margin:0">Next Step</h3>
-              <p class="small" style="margin-top:8px">Request payment details</p>
-              <a class="btn gold" style="margin-top:10px" href="fees.html#pay">Pay / Request</a>
+              <span class="small">${isAck ? "Saved on this device" : "Not acknowledged yet"}</span>
             </div>
           </div>
+        `;
+      }).join("");
 
-          <div class="callout" style="margin-top:14px">
-            <strong>Subscription History (Preview)</strong>
-            <p class="sub" style="margin-top:8px">When connected, parents will see a full payment history here.</p>
+      // bind ack checkboxes
+      document.querySelectorAll('input[type="checkbox"][data-ack]').forEach(cb=>{
+        cb.addEventListener("change", (e)=>{
+          const id = e.target.getAttribute("data-ack");
+          const st = loadAck();
+          st[id] = e.target.checked;
+          saveAck(st);
+          render(); // refresh status text
+        });
+      });
+    }
 
-            <div style="overflow:auto; margin-top:10px">
-              <table style="width:100%; border-collapse:collapse; font-size:14px">
-                <thead>
-                  <tr>
-                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Date</th>
-                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Item</th>
-                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Period</th>
-                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Amount</th>
-                    <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12)">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
-                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">Subscription</td>
-                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
-                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
-                    <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08)">—</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+    elSearch.addEventListener("input", render);
+    elType.addEventListener("change", render);
+    elAudience.addEventListener("change", render);
+    elReset.addEventListener("click", ()=>{
+      elSearch.value = "";
+      elType.value = "all";
+      elAudience.value = "all";
+      render();
+    });
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="messages">
-    <div class="container">
-      <div class="grid grid-2">
-        <div class="card">
-          <h2 class="h2">Send a Private Message</h2>
-          <p class="sub">Use this to communicate privately with the academy team.</p>
-
-          <form name="portal-message" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="success.html" style="margin-top:14px">
-            <input type="hidden" name="form-name" value="portal-message" />
-            <p style="display:none;">
-              <label>Don’t fill this out: <input name="bot-field" /></label>
-            </p>
-
-            <div class="grid grid-2">
-              <div>
-                <label>Your Name</label>
-                <input class="input" type="text" name="name" required>
-              </div>
-              <div>
-                <label>Email</label>
-                <input class="input" type="email" name="email" required>
-              </div>
-            </div>
-
-            <div class="grid grid-2" style="margin-top:12px;">
-              <div>
-                <label>Child Name (optional)</label>
-                <input class="input" type="text" name="child_name">
-              </div>
-              <div>
-                <label>Topic</label>
-                <select class="input" name="topic" required>
-                  <option value="">Select…</option>
-                  <option>Fees / Payments</option>
-                  <option>Training / Schedule</option>
-                  <option>Medical / Injury</option>
-                  <option>School / Education</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div style="margin-top:12px;">
-              <label>Message</label>
-              <textarea class="input" name="message" rows="6" required></textarea>
-            </div>
-
-            <div style="margin-top:14px;">
-              <button class="btn primary" type="submit">Send Message</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="card">
-          <h2 class="h2">Fast Actions</h2>
-          <p class="sub">Quick links parents use most.</p>
-
-          <div class="grid grid-2" style="margin-top:14px">
-            <a class="card" href="fees.html">
-              <h3 style="margin:0">View Fees</h3>
-              <p class="small" style="margin-top:8px">Programs, options, discounts</p>
-            </a>
-            <a class="card" href="fees.html#pay">
-              <h3 style="margin:0">Request Payment</h3>
-              <p class="small" style="margin-top:8px">Get payment instructions</p>
-            </a>
-            <a class="card" href="admissions.html#enrol">
-              <h3 style="margin:0">Enrol a Child</h3>
-              <p class="small" style="margin-top:8px">Submit an application</p>
-            </a>
-            <a class="card" href="contact.html">
-              <h3 style="margin:0">Contact</h3>
-              <p class="small" style="margin-top:8px">Reach the academy team</p>
-            </a>
-          </div>
-
-          <div class="callout" style="margin-top:14px">
-            <strong>Coming Next</strong>
-            <p class="sub" style="margin-top:8px">
-              Parent login, payment receipts, downloadable invoices, subscription history, and secure messaging inside the portal.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="cols">
-        <div>
-          <div class="brand" style="margin-bottom:10px">
-            <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
-            <div class="brand-text">
-              <strong>GLOBAL SPORT ACADEMY</strong>
-              <span data-i18n="tagline">From Africa to the World</span>
-            </div>
-          </div>
-          <p class="small" data-i18n="foot_about">
-            Global Sport Academy (GSA) is a dual-pathway football and sport science institute based in Ngaoundéré, Cameroon.
-          </p>
-        </div>
-
-        <div>
-          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
-          <p class="small">
-            <a href="football.html" data-i18n="nav_football">Football</a><br/>
-            <a href="education.html" data-i18n="nav_education">Education</a><br/>
-            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
-            <a href="fees.html" data-i18n="nav_fees">Fees</a>
-          </p>
-        </div>
-
-        <div>
-          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
-          <p class="small">
-            Ngaoundéré, Adamaoua, Cameroon<br/>
-            <a href="contact.html" data-i18n="cta_contact">Contact</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="hr"></div>
-      <div class="notice">© <span id="year"></span> Global Sport Academy. <span data-i18n="foot_rights">All rights reserved.</span></div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    render();
+  </script>
 </body>
 </html>
