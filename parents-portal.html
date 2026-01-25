@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Parents Portal | Global Sport Academy (GSA)</title>
-  <meta name="description" content="Global Sport Academy Parents Portal: documents, schedules, notices, and communications." />
+  <meta name="description" content="Global Sport Academy Parents Portal: dashboard, notices, documents, schedules, and communications." />
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Tiny page-only helpers (kept minimal to preserve your global look) -->
+  <!-- Small page-only helpers (kept minimal) -->
   <style>
-    /* Minimal extras to make controls/cards look good with your global CSS */
     .portal-controls{
       display:flex; flex-wrap:wrap; gap:10px;
       margin: 12px 0 14px;
@@ -39,7 +38,7 @@
     .portal-meta{
       display:flex; flex-wrap:wrap; gap:8px; align-items:center;
       margin-bottom:8px;
-      opacity:.9;
+      opacity:.95;
     }
     .portal-pill{
       padding:4px 10px; border-radius:999px;
@@ -109,7 +108,7 @@
     </div>
   </div>
 
-  <!-- Header / Nav (same as index) -->
+  <!-- Header / Nav -->
   <header class="header">
     <div class="container">
       <nav class="nav">
@@ -151,11 +150,380 @@
       <div class="hero-wrap">
         <div>
           <div class="kicker">
-            <b data-i18n="portal_kicker_a">PARENTS PORTAL</b>
+            <b>PARENTS PORTAL</b>
             <span>•</span>
-            <span data-i18n="portal_kicker_b">Updates, documents & communication</span>
+            <span>Updates, documents & communication</span>
           </div>
 
-          <h1 class="h1" data-i18n="portal_h1">Welcome, Parents 👋</h1>
-          <p class="lead" data-i18n="portal_sub">
-            This portal centralizes key documents, schedules and important updates. Phase 1 is static; P
+          <h1 class="h1">Welcome, Parents 👋</h1>
+
+          <!-- IMPORTANT: no data-i18n here to avoid the "Phase 1 is static; P" truncation -->
+          <p class="lead">
+            This portal centralizes key documents, schedules and important updates.
+            Phase 1 is static; Phase 2 will include secure login and child-specific dashboards.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#dashboard">Dashboard</a>
+            <a class="btn" href="#notices">Notices</a>
+            <a class="btn" href="#docs">Documents</a>
+            <a class="btn gold" href="#message">Message</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <p class="mini">Quick actions</p>
+          <ul class="list">
+            <li><span class="dot"></span><span><a href="fees.html">Fees & Payments</a></span></li>
+            <li><span class="dot"></span><span><a href="donations.html">Donate / Sponsor</a></span></li>
+            <li><span class="dot"></span><span><a href="admissions.html">Admissions</a></span></li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Schedules</span>
+            <span class="pill">Fees</span>
+            <span class="pill">Urgent</span>
+            <span class="pill">Updates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="section" id="dashboard">
+    <div class="container">
+      <h2 class="h2">Parents Dashboard</h2>
+      <p class="sub">Use these shortcuts to find the most important parent information quickly.</p>
+
+      <div class="grid grid-3" style="margin-top:14px">
+        <div class="card">
+          <h3>Fees & Payments</h3>
+          <p class="sub">Monthly fees, one-off costs, scholarships, and policies.</p>
+          <a class="btn primary" href="fees.html">Open Fees</a>
+        </div>
+
+        <div class="card">
+          <h3>Documents</h3>
+          <p class="sub">Handbook, code of conduct, schedules, and calendar.</p>
+          <a class="btn" href="#docs">Go to Documents</a>
+        </div>
+
+        <div class="card">
+          <h3>Support / Contact</h3>
+          <p class="sub">Send a message to the Academy team (Netlify form).</p>
+          <a class="btn gold" href="#message">Message the Academy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notices + Documents -->
+  <section class="section">
+    <div class="container">
+      <div class="split" id="notices">
+        <!-- Notices -->
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+            <h2 class="h2" style="margin:0">Notices & Updates</h2>
+            <span class="pill" id="countBadge">0 notices</span>
+          </div>
+
+          <div class="portal-controls">
+            <input id="searchInput" type="text" placeholder="Search notices (e.g., schedule, payment…)" />
+            <select id="typeFilter">
+              <option value="all">All types</option>
+              <option value="urgent">Urgent</option>
+              <option value="schedule">Schedule</option>
+              <option value="finance">Finance</option>
+              <option value="general">General</option>
+            </select>
+            <select id="audienceFilter">
+              <option value="all">All groups</option>
+              <option value="U10-U13">U10–U13</option>
+              <option value="U14-U17">U14–U17</option>
+              <option value="Elite">Elite</option>
+              <option value="All">All Parents</option>
+            </select>
+            <button class="btn" id="resetBtn" type="button">Reset</button>
+          </div>
+
+          <div class="portal-notices" id="noticesList"></div>
+
+          <p class="small" style="margin-top:12px; opacity:.85">
+            Tip: “Acknowledged” is saved on this device (Phase 1). In Phase 2 it will sync to parent accounts.
+          </p>
+        </div>
+
+        <!-- Documents -->
+        <div class="callout" id="docs">
+          <h2 class="h2">Key Documents</h2>
+          <p class="sub">Upload PDFs and link them here (handbook, conduct, schedule, calendar).</p>
+
+          <div style="display:grid; gap:10px; margin-top:12px">
+            <div class="portal-linkitem">
+              <span>Academy Handbook (PDF)</span>
+              <em><a href="#" onclick="alert('Upload handbook.pdf then link it here'); return false;">Download</a></em>
+            </div>
+            <div class="portal-linkitem">
+              <span>Code of Conduct</span>
+              <em><a href="#" onclick="alert('Link to code-of-conduct.pdf'); return false;">Download</a></em>
+            </div>
+            <div class="portal-linkitem">
+              <span>Training Schedule</span>
+              <em><a href="#" onclick="alert('Link to schedule.pdf'); return false;">View</a></em>
+            </div>
+            <div class="portal-linkitem">
+              <span>Competition Calendar</span>
+              <em><a href="#" onclick="alert('Link to calendar.pdf'); return false;">View</a></em>
+            </div>
+
+            <div class="portal-linkitem">
+              <span>Fees & Payments</span>
+              <em><a href="fees.html">Open</a></em>
+            </div>
+            <div class="portal-linkitem">
+              <span>Donations / Sponsorship</span>
+              <em><a href="donations.html">Open</a></em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section class="section" id="message">
+    <div class="container">
+      <div class="split">
+        <div class="callout">
+          <h2 class="h2">Message the Academy</h2>
+          <p class="sub">
+            Phase 1 uses a simple form. Phase 2 will include parent accounts and message history.
+          </p>
+          <div class="pills" style="margin-top:10px">
+            <span class="pill">Schedule</span>
+            <span class="pill">Fees / Payments</span>
+            <span class="pill">Medical</span>
+            <span class="pill">Conduct</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <form class="portal-form" name="parents-message" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="parents-message" />
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <label class="small">Your full name</label>
+            <input name="parent_name" type="text" required />
+
+            <label class="small">Email</label>
+            <input name="email" type="email" required />
+
+            <label class="small">Topic</label>
+            <select name="topic" required>
+              <option value="" disabled selected>Select topic…</option>
+              <option>Schedule</option>
+              <option>Fees / Payments</option>
+              <option>Donations / Sponsorship</option>
+              <option>Medical / Injury</option>
+              <option>Discipline / Conduct</option>
+              <option>Other</option>
+            </select>
+
+            <label class="small">Message</label>
+            <textarea name="message" placeholder="Write your message…" required></textarea>
+
+            <div class="portal-check">
+              <input id="privacy" type="checkbox" required />
+              <label for="privacy">I agree to the Privacy Policy and allow the Academy to contact me about this message.</label>
+            </div>
+
+            <button class="btn primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:10px">
+            <img src="assets/images/logo-white.png" alt="Global Sport Academy (GSA) logo" class="logo logo-footer">
+            <div class="brand-text">
+              <strong>GLOBAL SPORT ACADEMY</strong>
+              <span data-i18n="tagline">From Africa to the World</span>
+            </div>
+          </div>
+          <p class="small" data-i18n="foot_about">...</p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_quick">Quick Links</h3>
+          <p class="small">
+            <a href="football.html" data-i18n="nav_football">Football</a><br/>
+            <a href="education.html" data-i18n="nav_education">Education</a><br/>
+            <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a><br/>
+            <a href="fees.html" data-i18n="nav_fees">Fees</a><br/>
+            <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a><br/>
+            <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          </p>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px" data-i18n="foot_contact">Contact</h3>
+          <p class="small">
+            Ngaoundéré, Adamaoua, Cameroon<br/>
+            <a href="contact.html" data-i18n="cta_contact">Contact</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="notice">© <span id="year"></span> Global Sport Academy. <span data-i18n="foot_rights">All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --- Notices dataset ---
+    const notices = [
+      {
+        id: "n001",
+        pinned: true,
+        type: "urgent",
+        audience: "All",
+        date: "2026-01-25",
+        title: "Uniform fitting week (all groups)",
+        text: "Uniform fitting will run Monday–Friday, 16:00–19:00 at the Academy office. Please bring your child’s current kit for sizing reference."
+      },
+      {
+        id: "n002",
+        pinned: false,
+        type: "schedule",
+        audience: "U10-U13",
+        date: "2026-01-27",
+        title: "U10–U13 training time update",
+        text: "Tuesday training starts 30 minutes earlier this week due to pitch availability. Please arrive 15 minutes before the session."
+      },
+      {
+        id: "n003",
+        pinned: false,
+        type: "finance",
+        audience: "All",
+        date: "2026-01-28",
+        title: "Monthly fee reminder",
+        text: "Monthly training fees are due by the 5th of each month. If you need a payment plan, message the Academy using the form on this page."
+      },
+      {
+        id: "n004",
+        pinned: false,
+        type: "general",
+        audience: "Elite",
+        date: "2026-01-30",
+        title: "Elite program performance reviews",
+        text: "Elite program reviews will be shared with parents in the first week of February. Coach will schedule short 1:1 calls."
+      }
+    ];
+
+    const elList = document.getElementById("noticesList");
+    const elSearch = document.getElementById("searchInput");
+    const elType = document.getElementById("typeFilter");
+    const elAudience = document.getElementById("audienceFilter");
+    const elReset = document.getElementById("resetBtn");
+    const elCount = document.getElementById("countBadge");
+
+    const ACK_KEY = "gsa_notice_ack_v1";
+
+    function loadAck() {
+      try { return JSON.parse(localStorage.getItem(ACK_KEY)) || {}; }
+      catch { return {}; }
+    }
+    function saveAck(state) {
+      localStorage.setItem(ACK_KEY, JSON.stringify(state));
+    }
+
+    function pillForType(type){
+      if(type === "urgent") return `<span class="portal-pill urgent">Urgent</span>`;
+      if(type === "finance") return `<span class="portal-pill finance">Finance</span>`;
+      if(type === "schedule") return `<span class="portal-pill schedule">Schedule</span>`;
+      return `<span class="portal-pill">General</span>`;
+    }
+
+    function render() {
+      const q = (elSearch.value || "").trim().toLowerCase();
+      const t = elType.value;
+      const a = elAudience.value;
+
+      const ack = loadAck();
+
+      const sorted = [...notices].sort((x,y)=>{
+        if(!!y.pinned !== !!x.pinned) return (y.pinned?1:0) - (x.pinned?1:0);
+        return new Date(y.date) - new Date(x.date);
+      });
+
+      const filtered = sorted.filter(n=>{
+        const matchesQ = !q || (n.title + " " + n.text).toLowerCase().includes(q);
+        const matchesT = (t === "all") || (n.type === t);
+        const matchesA = (a === "all") || (n.audience === a) || (n.audience === "All");
+        return matchesQ && matchesT && matchesA;
+      });
+
+      elCount.textContent = `${filtered.length} notice${filtered.length===1?"":"s"}`;
+
+      elList.innerHTML = filtered.map(n=>{
+        const isAck = !!ack[n.id];
+        const cls = n.pinned ? "portal-notice top" : "portal-notice";
+        return `
+          <div class="${cls}">
+            <div class="portal-meta">
+              ${pillForType(n.type)}
+              <span class="portal-pill">Group: ${n.audience}</span>
+              <span class="portal-pill">Date: ${n.date}</span>
+              ${n.pinned ? `<span class="portal-pill">Pinned</span>` : ``}
+            </div>
+            <h3 style="margin:0 0 6px">${n.title}</h3>
+            <p class="sub" style="margin:0">${n.text}</p>
+
+            <div class="portal-actions">
+              <label class="portal-ack">
+                <input type="checkbox" data-ack="${n.id}" ${isAck ? "checked" : ""} />
+                Acknowledged
+              </label>
+              <span class="small">${isAck ? "Saved on this device" : "Not acknowledged yet"}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.querySelectorAll('input[type="checkbox"][data-ack]').forEach(cb=>{
+        cb.addEventListener("change", (e)=>{
+          const id = e.target.getAttribute("data-ack");
+          const st = loadAck();
+          st[id] = e.target.checked;
+          saveAck(st);
+          render();
+        });
+      });
+    }
+
+    elSearch.addEventListener("input", render);
+    elType.addEventListener("change", render);
+    elAudience.addEventListener("change", render);
+    elReset.addEventListener("click", ()=>{
+      elSearch.value = "";
+      elType.value = "all";
+      elAudience.value = "all";
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
