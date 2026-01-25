@@ -2,479 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Parents Portal | Global Sport Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parents Portal | Global Sport Academy (GSA)</title>
   <meta name="description" content="Global Sport Academy Parents Portal: documents, schedules, notices, and communications." />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 
+  <!-- Tiny page-only helpers (kept minimal to preserve your global look) -->
   <style>
-    :root{
-      --bg:#07162c;
-      --panel:#0b1d3a;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.75);
-      --accent:#d4b996;
-      --shadow:0 0 25px rgba(0,0,0,.35);
-      --radius:16px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:linear-gradient(180deg, var(--bg), #040b16);
-      color:var(--text);
-    }
-    a{color:var(--accent); text-decoration:none}
-    .wrap{max-width:980px; margin:0 auto; padding:28px 16px 80px}
-
-    header{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:10px 0 20px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .logo{
-      width:44px; height:44px; border-radius:12px;
-      background:rgba(212,185,150,.15);
-      border:1px solid rgba(212,185,150,.35);
-      display:grid; place-items:center;
-      font-weight:800; color:var(--accent);
-    }
-    .brand h1{font-size:18px; margin:0}
-    .brand p{margin:0; color:var(--muted); font-size:13px}
-
-    .panel{
-      background:var(--panel);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:22px;
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .grid{display:grid; gap:18px}
-    @media(min-width:900px){
-      .grid.two{grid-template-columns:1.1fr .9fr}
-    }
-
-    .hero h2{margin:0 0 6px; font-size:24px}
-    .hero p{margin:0; color:var(--muted); line-height:1.5}
-
-    .section-title{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin:0 0 14px;
-    }
-    .section-title h3{margin:0; font-size:18px}
-    .badge{
-      font-size:12px; padding:6px 10px; border-radius:999px;
-      background:rgba(212,185,150,.15);
-      border:1px solid rgba(212,185,150,.35);
-      color:var(--accent);
-      white-space:nowrap;
-    }
-
-    /* Notices controls */
-    .controls{
+    /* Minimal extras to make controls/cards look good with your global CSS */
+    .portal-controls{
       display:flex; flex-wrap:wrap; gap:10px;
-      margin-bottom:14px;
+      margin: 12px 0 14px;
     }
-    .controls input, .controls select{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:var(--text);
-      border-radius:10px;
+    .portal-controls input, .portal-controls select{
       padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:#fff;
       outline:none;
       min-width:180px;
     }
-    .controls input::placeholder{color:rgba(255,255,255,.55)}
-    .btn{
-      background:var(--accent);
-      border:none;
-      color:#07162c;
-      font-weight:800;
-      border-radius:10px;
-      padding:10px 12px;
-      cursor:pointer;
-      display:inline-block;
-    }
-    .btn.secondary{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      color:var(--text);
-      font-weight:700;
-    }
-
-    /* small CTA row */
-    .cta-row{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
-    }
-
-    /* Notice cards */
-    .notices{display:grid; gap:12px}
-    .notice{
-      padding:14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.04);
-    }
-    .notice.top{
-      border:1px solid rgba(212,185,150,.45);
-      background:rgba(212,185,150,.10);
-    }
-    .notice .meta{
-      display:flex; flex-wrap:wrap; align-items:center; gap:8px;
-      margin-bottom:8px;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .pill{
-      padding:4px 8px; border-radius:999px;
-      background:rgba(255,255,255,.08);
+    .portal-controls input::placeholder{color:rgba(255,255,255,.55)}
+    .portal-notices{display:grid; gap:12px; margin-top:10px}
+    .portal-notice{
+      border-radius:16px;
       border:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.85);
+      background:rgba(255,255,255,.04);
+      padding:14px;
+    }
+    .portal-notice.top{
+      border-color: rgba(212,185,150,.35);
+      background: rgba(212,185,150,.08);
+    }
+    .portal-meta{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+      margin-bottom:8px;
+      opacity:.9;
+    }
+    .portal-pill{
+      padding:4px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
       font-size:12px;
     }
-    .pill.urgent{
-      background:rgba(255,60,60,.12);
-      border-color:rgba(255,60,60,.25);
-      color:#ffd2d2;
-    }
-    .pill.finance{
-      background:rgba(90,200,120,.10);
-      border-color:rgba(90,200,120,.22);
-      color:#dbffe4;
-    }
-    .pill.schedule{
-      background:rgba(80,140,255,.10);
-      border-color:rgba(80,140,255,.22);
-      color:#dbe8ff;
-    }
-
-    .notice h4{margin:0 0 6px; font-size:16px}
-    .notice p{margin:0; color:var(--muted); line-height:1.5}
-
-    .notice .actions{
-      margin-top:10px; display:flex; flex-wrap:wrap; gap:10px;
+    .portal-pill.urgent{border-color:rgba(255,60,60,.25); background:rgba(255,60,60,.10)}
+    .portal-pill.finance{border-color:rgba(90,200,120,.22); background:rgba(90,200,120,.10)}
+    .portal-pill.schedule{border-color:rgba(80,140,255,.22); background:rgba(80,140,255,.10)}
+    .portal-actions{
+      margin-top:10px;
+      display:flex; flex-wrap:wrap; gap:10px;
       align-items:center; justify-content:space-between;
     }
-    .small{font-size:12px; color:var(--muted)}
-    .ack{
+    .portal-ack{
       display:flex; gap:8px; align-items:center;
-      font-size:12px; color:rgba(255,255,255,.85);
+      font-size:12px; opacity:.9;
     }
-    .ack input{transform:translateY(1px)}
-
-    /* Simple links list */
-    .links{display:grid; gap:10px}
-    .link-item{
+    .portal-ack input{transform:translateY(1px)}
+    .portal-linkitem{
+      display:flex; justify-content:space-between; gap:10px;
       padding:12px;
-      border-radius:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
       background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
     }
-    .link-item span{color:rgba(255,255,255,.9)}
-    .link-item em{color:var(--muted); font-style:normal; font-size:12px}
-
-    /* Netlify form style (optional) */
-    .form input, .form textarea, .form select{
+    .portal-linkitem em{font-style:normal; opacity:.8; font-size:12px}
+    .portal-form input, .portal-form textarea, .portal-form select{
       width:100%;
       padding:12px;
       margin-bottom:12px;
       border-radius:10px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.06);
-      color:var(--text);
+      color:#fff;
       outline:none;
       font-size:14px;
     }
-    .form textarea{min-height:110px; resize:vertical}
-    .form .check{
-      display:flex; gap:10px; align-items:flex-start; margin:10px 0 14px;
-      color:rgba(255,255,255,.85);
-      font-size:13px;
-    }
-    footer{
-      margin-top:26px;
-      color:var(--muted);
-      font-size:12px;
-      text-align:center;
+    .portal-form textarea{min-height:110px; resize:vertical}
+    .portal-check{
+      display:flex; gap:10px; align-items:flex-start;
+      margin:10px 0 14px;
+      font-size:13px; opacity:.9;
     }
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">GSA</div>
-        <div>
-          <h1>Parents Portal</h1>
-          <p>Global Sport Academy • Phase 1 (Static)</p>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="badges">
+          <span class="badge" data-i18n="top_location">Ngaoundéré • Adamaoua • Cameroon</span>
+          <span class="badge" data-i18n="top_school">Based at Global Management School</span>
+        </div>
+        <div class="lang">
+          <span style="opacity:.85">Language</span>
+          <select id="langSelect" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="es">ES</option>
+          </select>
         </div>
       </div>
-      <a class="badge" href="index.html">← Back to Website</a>
-    </header>
-
-    <div class="panel hero" style="margin-bottom:18px;">
-      <h2>Welcome, Parents 👋</h2>
-      <p>
-        This portal centralizes key documents, schedules and important updates.
-        Phase 1 is static; Phase 2 will include secure login and child-specific dashboards.
-      </p>
-
-      <!-- NEW: Quick navigation -->
-      <div class="cta-row">
-        <a class="btn secondary" href="fees.html">View Fees</a>
-        <a class="btn" href="donations.html">Donate / Sponsor</a>
-        <a class="btn secondary" href="admissions.html">Admissions</a>
-      </div>
     </div>
-
-    <div class="grid two">
-      <!-- LEFT: NOTICES -->
-      <section class="panel">
-        <div class="section-title">
-          <h3>Notices & Updates</h3>
-          <span class="badge" id="countBadge">0 notices</span>
-        </div>
-
-        <div class="controls">
-          <input id="searchInput" type="text" placeholder="Search notices (e.g., schedule, payment…)" />
-          <select id="typeFilter">
-            <option value="all">All types</option>
-            <option value="urgent">Urgent</option>
-            <option value="schedule">Schedule</option>
-            <option value="finance">Finance</option>
-            <option value="general">General</option>
-          </select>
-          <select id="audienceFilter">
-            <option value="all">All groups</option>
-            <option value="U10-U13">U10–U13</option>
-            <option value="U14-U17">U14–U17</option>
-            <option value="Elite">Elite</option>
-            <option value="All">All Parents</option>
-          </select>
-
-          <button class="btn secondary" id="resetBtn" type="button">Reset</button>
-        </div>
-
-        <div class="notices" id="noticesList"></div>
-
-        <div style="margin-top:14px;" class="small">
-          Tip: “Acknowledged” is saved on this device (Phase 1). In Phase 2 it will sync to parent accounts.
-        </div>
-      </section>
-
-      <!-- RIGHT -->
-      <aside class="grid">
-        <section class="panel">
-          <div class="section-title">
-            <h3>Key Documents</h3>
-            <span class="badge">Downloads</span>
-          </div>
-
-          <div class="links">
-            <div class="link-item">
-              <span>Academy Handbook (PDF)</span>
-              <em><a href="#" onclick="alert('Upload handbook.pdf then link it here'); return false;">Download</a></em>
-            </div>
-            <div class="link-item">
-              <span>Code of Conduct</span>
-              <em><a href="#" onclick="alert('Link to code-of-conduct.pdf'); return false;">Download</a></em>
-            </div>
-            <div class="link-item">
-              <span>Training Schedule</span>
-              <em><a href="#" onclick="alert('Link to schedule.pdf'); return false;">View</a></em>
-            </div>
-            <div class="link-item">
-              <span>Competition Calendar</span>
-              <em><a href="#" onclick="alert('Link to calendar.pdf'); return false;">View</a></em>
-            </div>
-
-            <!-- NEW: Helpful navigation for parents -->
-            <div class="link-item">
-              <span>Fees & Payments</span>
-              <em><a href="fees.html">Open</a></em>
-            </div>
-            <div class="link-item">
-              <span>Donations / Sponsorship</span>
-              <em><a href="donations.html">Open</a></em>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="section-title">
-            <h3>Message the Academy</h3>
-            <span class="badge">Optional</span>
-          </div>
-
-          <form class="form" name="parents-message" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="parents-message" />
-            <p style="display:none;">
-              <label>Don’t fill this out: <input name="bot-field" /></label>
-            </p>
-
-            <input name="parent_name" type="text" placeholder="Your full name" required />
-            <input name="email" type="email" placeholder="Email" required />
-            <select name="topic" required>
-              <option value="" disabled selected>Select topic…</option>
-              <option>Schedule</option>
-              <option>Fees / Payments</option>
-              <option>Donations / Sponsorship</option>
-              <option>Medical / Injury</option>
-              <option>Discipline / Conduct</option>
-              <option>Other</option>
-            </select>
-            <textarea name="message" placeholder="Write your message…" required></textarea>
-
-            <div class="check">
-              <input id="privacy" type="checkbox" required />
-              <label for="privacy">I agree to the Privacy Policy and allow the Academy to contact me about this message.</label>
-            </div>
-
-            <button class="btn" type="submit">Send Message</button>
-          </form>
-        </section>
-      </aside>
-    </div>
-
-    <footer>
-      © Global Sport Academy • Parents Portal (Phase 1)
-    </footer>
   </div>
 
-  <script>
-    const notices = [
-      {
-        id: "n001",
-        pinned: true,
-        type: "urgent",
-        audience: "All",
-        date: "2026-01-25",
-        title: "Uniform fitting week (all groups)",
-        text: "Uniform fitting will run Monday–Friday, 16:00–19:00 at the Academy office. Please bring your child’s current kit for sizing reference."
-      },
-      {
-        id: "n002",
-        pinned: false,
-        type: "schedule",
-        audience: "U10-U13",
-        date: "2026-01-27",
-        title: "U10–U13 training time update",
-        text: "Tuesday training starts 30 minutes earlier this week due to pitch availability. Please arrive 15 minutes before the session."
-      },
-      {
-        id: "n003",
-        pinned: false,
-        type: "finance",
-        audience: "All",
-        date: "2026-01-28",
-        title: "Monthly fee reminder",
-        text: "Monthly training fees are due by the 5th of each month. If you need a payment plan, message the Academy using the form on this page."
-      },
-      {
-        id: "n004",
-        pinned: false,
-        type: "general",
-        audience: "Elite",
-        date: "2026-01-30",
-        title: "Elite program performance reviews",
-        text: "Elite program reviews will be shared with parents in the first week of February. Coach will schedule short 1:1 calls."
-      }
-    ];
-
-    const elList = document.getElementById("noticesList");
-    const elSearch = document.getElementById("searchInput");
-    const elType = document.getElementById("typeFilter");
-    const elAudience = document.getElementById("audienceFilter");
-    const elReset = document.getElementById("resetBtn");
-    const elCount = document.getElementById("countBadge");
-
-    const ACK_KEY = "gsa_notice_ack_v1";
-
-    function loadAck() {
-      try { return JSON.parse(localStorage.getItem(ACK_KEY)) || {}; }
-      catch { return {}; }
-    }
-    function saveAck(state) {
-      localStorage.setItem(ACK_KEY, JSON.stringify(state));
-    }
-
-    function pillForType(type){
-      if(type === "urgent") return `<span class="pill urgent">Urgent</span>`;
-      if(type === "finance") return `<span class="pill finance">Finance</span>`;
-      if(type === "schedule") return `<span class="pill schedule">Schedule</span>`;
-      return `<span class="pill">General</span>`;
-    }
-
-    function render() {
-      const q = (elSearch.value || "").trim().toLowerCase();
-      const t = elType.value;
-      const a = elAudience.value;
-
-      const ack = loadAck();
-
-      const sorted = [...notices].sort((x,y)=>{
-        if(!!y.pinned !== !!x.pinned) return (y.pinned?1:0) - (x.pinned?1:0);
-        return new Date(y.date) - new Date(x.date);
-      });
-
-      const filtered = sorted.filter(n=>{
-        const matchesQ = !q || (n.title + " " + n.text).toLowerCase().includes(q);
-        const matchesT = (t === "all") || (n.type === t);
-        const matchesA = (a === "all") || (n.audience === a) || (n.audience === "All");
-        return matchesQ && matchesT && matchesA;
-      });
-
-      elCount.textContent = `${filtered.length} notice${filtered.length===1?"":"s"}`;
-
-      elList.innerHTML = filtered.map(n=>{
-        const isAck = !!ack[n.id];
-        const cls = n.pinned ? "notice top" : "notice";
-        return `
-          <div class="${cls}">
-            <div class="meta">
-              ${pillForType(n.type)}
-              <span class="pill">Group: ${n.audience}</span>
-              <span class="pill">Date: ${n.date}</span>
-              ${n.pinned ? `<span class="pill">Pinned</span>` : ``}
-            </div>
-            <h4>${n.title}</h4>
-            <p>${n.text}</p>
-
-            <div class="actions">
-              <label class="ack">
-                <input type="checkbox" data-ack="${n.id}" ${isAck ? "checked" : ""} />
-                Acknowledged
-              </label>
-              <span class="small">${isAck ? "Saved on this device" : "Not acknowledged yet"}</span>
-            </div>
+  <!-- Header / Nav (same as index) -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <img src="assets/images/logo.png" alt="Global Sport Academy (GSA) logo" class="logo">
+          <div class="brand-text">
+            <strong>GSA</strong>
+            <span data-i18n="tagline">From Africa to the World</span>
           </div>
-        `;
-      }).join("");
+        </a>
 
-      document.querySelectorAll('input[type="checkbox"][data-ack]').forEach(cb=>{
-        cb.addEventListener("change", (e)=>{
-          const id = e.target.getAttribute("data-ack");
-          const st = loadAck();
-          st[id] = e.target.checked;
-          saveAck(st);
-          render();
-        });
-      });
-    }
+        <button class="mobile-toggle" id="mobileToggle" type="button">Menu</button>
 
-    elSearch.addEventListener("input", render);
-    elType.addEventListener("change", render);
-    elAudience.addEventListener("change", render);
-    elReset.addEventListener("click", ()=>{
-      elSearch.value = "";
-      elType.value = "all";
-      elAudience.value = "all";
-      render();
-    });
+        <div class="navlinks" aria-label="Primary navigation">
+          <a href="index.html" data-i18n="nav_home">Home</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="football.html" data-i18n="nav_football">Football</a>
+          <a href="education.html" data-i18n="nav_education">Education</a>
+          <a href="dual-pathway.html" data-i18n="nav_dual">Dual Pathway</a>
+          <a href="admissions.html" data-i18n="nav_admissions">Admissions</a>
+          <a href="fees.html" data-i18n="nav_fees">Fees</a>
+          <a href="parents-portal.html" data-i18n="nav_portal">Parents Portal</a>
+          <a href="donations.html" data-i18n="nav_donations">Donations</a>
+          <a href="partnerships.html" data-i18n="nav_partnerships">Partnerships</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </div>
 
-    render();
-  </script>
-</body>
-</html>
+        <div class="nav-cta">
+          <a class="btn primary" href="admissions.html" data-i18n="cta_enrol">Enrol Now</a>
+          <a class="btn gold" href="donations.html" data-i18n="cta_donate">Donate</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-wrap">
+        <div>
+          <div class="kicker">
+            <b data-i18n="portal_kicker_a">PARENTS PORTAL</b>
+            <span>•</span>
+            <span data-i18n="portal_kicker_b">Updates, documents & communication</span>
+          </div>
+
+          <h1 class="h1" data-i18n="portal_h1">Welcome, Parents 👋</h1>
+          <p class="lead" data-i18n="portal_sub">
+            This portal centralizes key documents, schedules and important updates. Phase 1 is static; P
