@@ -93,12 +93,18 @@
       border-radius:10px;
       padding:10px 12px;
       cursor:pointer;
+      display:inline-block;
     }
     .btn.secondary{
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.12);
       color:var(--text);
       font-weight:700;
+    }
+
+    /* small CTA row */
+    .cta-row{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
     }
 
     /* Notice cards */
@@ -214,13 +220,20 @@
         This portal centralizes key documents, schedules and important updates.
         Phase 1 is static; Phase 2 will include secure login and child-specific dashboards.
       </p>
+
+      <!-- NEW: Quick navigation -->
+      <div class="cta-row">
+        <a class="btn secondary" href="fees.html">View Fees</a>
+        <a class="btn" href="donations.html">Donate / Sponsor</a>
+        <a class="btn secondary" href="admissions.html">Admissions</a>
+      </div>
     </div>
 
     <div class="grid two">
-      <!-- LEFT: D) NOTICES (MAIN) -->
+      <!-- LEFT: NOTICES -->
       <section class="panel">
         <div class="section-title">
-          <h3>D) Notices & Updates</h3>
+          <h3>Notices & Updates</h3>
           <span class="badge" id="countBadge">0 notices</span>
         </div>
 
@@ -251,7 +264,7 @@
         </div>
       </section>
 
-      <!-- RIGHT: Quick docs + optional message form -->
+      <!-- RIGHT -->
       <aside class="grid">
         <section class="panel">
           <div class="section-title">
@@ -276,6 +289,16 @@
               <span>Competition Calendar</span>
               <em><a href="#" onclick="alert('Link to calendar.pdf'); return false;">View</a></em>
             </div>
+
+            <!-- NEW: Helpful navigation for parents -->
+            <div class="link-item">
+              <span>Fees & Payments</span>
+              <em><a href="fees.html">Open</a></em>
+            </div>
+            <div class="link-item">
+              <span>Donations / Sponsorship</span>
+              <em><a href="donations.html">Open</a></em>
+            </div>
           </div>
         </section>
 
@@ -285,7 +308,6 @@
             <span class="badge">Optional</span>
           </div>
 
-          <!-- Netlify form (optional). If you already use Netlify forms, this will work immediately. -->
           <form class="form" name="parents-message" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="parents-message" />
             <p style="display:none;">
@@ -298,6 +320,7 @@
               <option value="" disabled selected>Select topic…</option>
               <option>Schedule</option>
               <option>Fees / Payments</option>
+              <option>Donations / Sponsorship</option>
               <option>Medical / Injury</option>
               <option>Discipline / Conduct</option>
               <option>Other</option>
@@ -321,7 +344,6 @@
   </div>
 
   <script>
-    // --- Notices dataset (edit these any time) ---
     const notices = [
       {
         id: "n001",
@@ -392,7 +414,6 @@
 
       const ack = loadAck();
 
-      // pinned first, then by date desc
       const sorted = [...notices].sort((x,y)=>{
         if(!!y.pinned !== !!x.pinned) return (y.pinned?1:0) - (x.pinned?1:0);
         return new Date(y.date) - new Date(x.date);
@@ -432,14 +453,13 @@
         `;
       }).join("");
 
-      // bind ack checkboxes
       document.querySelectorAll('input[type="checkbox"][data-ack]').forEach(cb=>{
         cb.addEventListener("change", (e)=>{
           const id = e.target.getAttribute("data-ack");
           const st = loadAck();
           st[id] = e.target.checked;
           saveAck(st);
-          render(); // refresh status text
+          render();
         });
       });
     }
